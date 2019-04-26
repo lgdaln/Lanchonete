@@ -21,7 +21,6 @@ public class Cliente {
     }
 
     public void setNome(String nome) {
-        nome = "Luiz";
         this.nome = nome;
     }
     

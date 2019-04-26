@@ -75,4 +75,8 @@ public class DadosVenda extends ConexaoBanco {
         super.desconectar();
         return retorno;
     }
+
+    public Iterable<Produto> listar(Venda filtro) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
