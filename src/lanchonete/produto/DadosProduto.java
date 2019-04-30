@@ -27,7 +27,7 @@ public class DadosProduto extends ConexaoBanco{
     }
 
     
-    public void removerProduto(Produto p) throws SQLException, Exception {
+    public void removerProduto(int p) throws SQLException, Exception {
         //instrucao a ser executada
         String sql = "DELETE FROM produto WHERE cod_produto = ? ";
         
@@ -35,7 +35,7 @@ public class DadosProduto extends ConexaoBanco{
         //preparando a instrução
         PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
         //passando os valores para os parametros
-        preparedStatement.setInt(1, p.getCod());
+        preparedStatement.setInt(1, p);
         // execute insert SQL stetement
         preparedStatement.executeUpdate();
         //fechando a conexão com o banco de dados

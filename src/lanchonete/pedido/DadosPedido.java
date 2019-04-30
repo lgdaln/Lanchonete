@@ -3,6 +3,7 @@ package lanchonete.pedido;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import lanchonete.ConexaoBanco;
 import lanchonete.atendente.Atendente;
@@ -100,6 +101,23 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
         super.desconectar();
         return retorno;
     }
+    
+    
+    public void removerPedido(int p) throws SQLException, Exception {
+        //instrucao a ser executada
+        String sql = "DELETE FROM pedido WHERE cod_pedido = ? ";
+        
+
+        //preparando a instrução
+        PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
+        //passando os valores para os parametros
+        preparedStatement.setInt(1, p);
+        // execute insert SQL stetement
+        preparedStatement.executeUpdate();
+        //fechando a conexão com o banco de dados
+        super.desconectar();
+    }
+
 
 
 

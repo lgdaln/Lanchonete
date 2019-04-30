@@ -8,10 +8,13 @@ package lanchonete.forms;
 import javax.swing.table.DefaultTableModel;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import lanchonete.pedido.DadosPedido;
 import lanchonete.pedido.Pedido;
+import lanchonete.produto.DadosProduto;
 
 /**
  *
@@ -27,6 +30,7 @@ public class FormLanchonete4 extends javax.swing.JFrame {
      */
     public FormLanchonete4() {
         initComponents();
+        setLocationRelativeTo(null);  
         carregarPedidos();
     }
 
@@ -97,6 +101,11 @@ public class FormLanchonete4 extends javax.swing.JFrame {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-cancelar-34.png"))); // NOI18N
         jButton1.setText("CANCELAR");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-selecionado-36.png"))); // NOI18N
         jButton2.setText("FINALIZADO");
@@ -240,6 +249,24 @@ public class FormLanchonete4 extends javax.swing.JFrame {
         // TODO add your handling code here:
         carregarPedidos();
     }//GEN-LAST:event_jbAtualizarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int linha = jTableConzinha.getSelectedRow();
+        int codigoPedido = (int) jTableConzinha.getValueAt(linha, 0);
+        DadosPedido dadosPedido = new DadosPedido();
+            try {
+                dadosPedido.removerPedido(codigoPedido);
+                JOptionPane.showMessageDialog(this,"Pedido excluido com sucesso!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+                carregarPedidos();
+
+
+            } catch (Exception ex) {
+                Logger.getLogger(FormLanchonete4.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Erro ao ecluir o pedido", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+            }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
