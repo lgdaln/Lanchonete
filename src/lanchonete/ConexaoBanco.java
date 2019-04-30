@@ -5,9 +5,16 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.beans.Statement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 
 public class ConexaoBanco {
+   
+
+    public static void closeConnection(com.mysql.jdbc.Connection con, PreparedStatement pstm, ResultSet rs) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
        private Statement stmt;
     public Connection conn;
     //private final String DRIVER_SQLSERVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";

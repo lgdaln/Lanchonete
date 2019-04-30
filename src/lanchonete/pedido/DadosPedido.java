@@ -69,6 +69,41 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
         super.desconectar();
         return retorno;
     }
+
+
+    public ArrayList<Pedido> listar(Pedido filtro) throws Exception {
+        ArrayList<Pedido> retorno = new ArrayList<>();
+
+        //instrução sql listando pedidos
+        String sql = " select cod_pedido, data_pedido, hora_pedido, descricao_pedido, status_pedido, obs_pedido,  cod_cliente, cod_atendente";
+        sql += " from Pedido as p ";
+        sql += " where p.cod_pedido > 0 ";
+        if (filtro.getCod() > 0) {
+            sql += " and p.cod_pedido = ? ";
+        }
+        //preparando a instrução
+        PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
+
+        if (filtro.getCod() > 0) {
+            preparedStatement.setInt(1, filtro.getCod());
+        }
+        //executando a instrução sql
+        ResultSet leitor = preparedStatement.executeQuery();
+        //lendo os resultados
+        while (leitor.next()) {
+            Pedido p = new Pedido();
+            p.setCod(leitor.getInt("cod_pedido"));
+            p.setDescricao(leitor.getString("descricao_pedido"));
+            retorno.add(p);
+        }
+        //fechando a conexão com o banco de dados
+        super.desconectar();
+        return retorno;
+    }
+
+
+
+
 }
        
      
