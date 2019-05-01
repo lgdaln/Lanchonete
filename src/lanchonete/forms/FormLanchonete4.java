@@ -5,6 +5,7 @@
  */
 package lanchonete.forms;
 
+import java.sql.PreparedStatement;
 import javax.swing.table.DefaultTableModel;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import lanchonete.atendente.Atendente;
 import lanchonete.pedido.DadosPedido;
 import lanchonete.pedido.Pedido;
 import lanchonete.produto.DadosProduto;
@@ -48,16 +50,16 @@ public class FormLanchonete4 extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableConzinha = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jbPedidoEntregue = new javax.swing.JButton();
+        jbAtendente1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jbAtendente2 = new javax.swing.JButton();
+        jbAtendente3 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jbAtualizar = new javax.swing.JButton();
+        jbPedidoPronto = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,14 +77,14 @@ public class FormLanchonete4 extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Descrição", "Status"
+                "Código", "Descrição", "Atendente", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -96,7 +98,8 @@ public class FormLanchonete4 extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableConzinha);
         if (jTableConzinha.getColumnModel().getColumnCount() > 0) {
             jTableConzinha.getColumnModel().getColumn(1).setPreferredWidth(300);
-            jTableConzinha.getColumnModel().getColumn(2).setPreferredWidth(10);
+            jTableConzinha.getColumnModel().getColumn(2).setPreferredWidth(30);
+            jTableConzinha.getColumnModel().getColumn(3).setPreferredWidth(10);
         }
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-cancelar-34.png"))); // NOI18N
@@ -107,22 +110,21 @@ public class FormLanchonete4 extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-selecionado-36.png"))); // NOI18N
-        jButton2.setText("FINALIZADO");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jbPedidoEntregue.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-selecionado-36.png"))); // NOI18N
+        jbPedidoEntregue.setText("ENTREGUE");
+        jbPedidoEntregue.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jbPedidoEntregueActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton3.setText("ATENDENTE1");
-
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ATENDENTE");
+        jbAtendente1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jbAtendente1.setText("ATENDENTE1");
+        jbAtendente1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAtendente1ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("jLabel2");
 
@@ -132,11 +134,21 @@ public class FormLanchonete4 extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-cozinheiro-48.png"))); // NOI18N
         jLabel6.setText("jLabel3");
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton4.setText("ATENDENTE1");
+        jbAtendente2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jbAtendente2.setText("ATENDENTE2");
+        jbAtendente2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAtendente2ActionPerformed(evt);
+            }
+        });
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton5.setText("ATENDENTE1");
+        jbAtendente3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jbAtendente3.setText("ATENDENTE3");
+        jbAtendente3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAtendente3ActionPerformed(evt);
+            }
+        });
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-cozinheiro-48.png"))); // NOI18N
         jLabel7.setText("jLabel3");
@@ -149,45 +161,55 @@ public class FormLanchonete4 extends javax.swing.JFrame {
             }
         });
 
+        jbPedidoPronto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-selecionado-36.png"))); // NOI18N
+        jbPedidoPronto.setText("PEDIDO PRONTO");
+        jbPedidoPronto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbPedidoProntoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jbAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+                    .addComponent(jbAtualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jbPedidoPronto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jButton1)
+                                        .addGap(43, 43, 43)
+                                        .addComponent(jbPedidoEntregue)))
                                 .addGap(32, 32, 32))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(45, 45, 45)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jbAtendente2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jbAtendente1, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(54, 54, 54)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addGap(50, 50, 50))))
+                                        .addComponent(jbAtendente3, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(103, 103, 103))))))
             .addComponent(jTitulo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
@@ -195,35 +217,31 @@ public class FormLanchonete4 extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTitulo1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 33, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 65, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbAtendente1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addGap(33, 33, 33)
+                        .addGap(51, 51, 51)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbAtendente2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(jLabel2))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7))))
-                        .addGap(170, 170, 170)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 399, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel2)
+                        .addGap(8, 8, 8)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jbAtendente3, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addGap(60, 60, 60)
+                        .addComponent(jbPedidoPronto, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbAtualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1)
+                        .addComponent(jbPedidoEntregue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(24, 24, 24))
         );
 
@@ -241,9 +259,22 @@ public class FormLanchonete4 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jbPedidoEntregueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPedidoEntregueActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+        String statusPedido = "Entregue";
+        int linha = jTableConzinha.getSelectedRow();
+        int codigoPedido = (int) jTableConzinha.getValueAt(linha, 0);
+        DadosPedido dadosPedido = new DadosPedido();
+            try {
+                dadosPedido.atualizarPedidoEntregue(statusPedido, codigoPedido);
+                JOptionPane.showMessageDialog(this,"Pedido entregue para o cliente!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+                carregarPedidos();
+            } catch (Exception ex) {
+                Logger.getLogger(FormLanchonete4.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Erro ao carregar Pedido entregue", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+            }
+    }//GEN-LAST:event_jbPedidoEntregueActionPerformed
 
     private void jbAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarActionPerformed
         // TODO add your handling code here:
@@ -267,6 +298,79 @@ public class FormLanchonete4 extends javax.swing.JFrame {
 
             }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jbAtendente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtendente1ActionPerformed
+        // TODO add your handling code here:
+        
+        String atendente = "Atendente 1";
+        int linha = jTableConzinha.getSelectedRow();
+        int codigoPedido = (int) jTableConzinha.getValueAt(linha, 0);
+        DadosPedido dadosPedido = new DadosPedido();
+            try {
+                dadosPedido.atualizarPedido(atendente, codigoPedido);
+                JOptionPane.showMessageDialog(this,"Pedido direcionado para o Atendente 1!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+                carregarPedidos();
+            } catch (Exception ex) {
+                Logger.getLogger(FormLanchonete4.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Erro ao direcionado para o Atendente 1!", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+            }
+        
+        
+    }//GEN-LAST:event_jbAtendente1ActionPerformed
+
+    private void jbAtendente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtendente2ActionPerformed
+        // TODO add your handling code here:
+        String atendente = "Atendente 2";
+        int linha = jTableConzinha.getSelectedRow();
+        int codigoPedido = (int) jTableConzinha.getValueAt(linha, 0);
+        DadosPedido dadosPedido = new DadosPedido();
+            try {
+                dadosPedido.atualizarPedido(atendente, codigoPedido);
+                JOptionPane.showMessageDialog(this,"Pedido direcionado para o Atendente 2!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+                carregarPedidos();
+            } catch (Exception ex) {
+                Logger.getLogger(FormLanchonete4.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Erro ao direcionado para o Atendente 2!", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+            }
+    }//GEN-LAST:event_jbAtendente2ActionPerformed
+
+    private void jbAtendente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtendente3ActionPerformed
+        // TODO add your handling code here:
+        String atendente = "Atendente 3";
+        int linha = jTableConzinha.getSelectedRow();
+        int codigoPedido = (int) jTableConzinha.getValueAt(linha, 0);
+        DadosPedido dadosPedido = new DadosPedido();
+            try {
+                dadosPedido.atualizarPedido(atendente, codigoPedido);
+                JOptionPane.showMessageDialog(this,"Pedido direcionado para o Atendente 3!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+                carregarPedidos();
+            } catch (Exception ex) {
+                Logger.getLogger(FormLanchonete4.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Erro ao direcionado para o Atendente 3!", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+            }
+    }//GEN-LAST:event_jbAtendente3ActionPerformed
+
+    private void jbPedidoProntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPedidoProntoActionPerformed
+        // TODO add your handling code here:
+        String statusPedido = "Pronto";
+        int linha = jTableConzinha.getSelectedRow();
+        int codigoPedido = (int) jTableConzinha.getValueAt(linha, 0);
+        DadosPedido dadosPedido = new DadosPedido();
+            try {
+                dadosPedido.atualizarStatus(statusPedido, codigoPedido);
+                JOptionPane.showMessageDialog(this,"Pedido pronto para o cliente!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+                carregarPedidos();
+            } catch (Exception ex) {
+                Logger.getLogger(FormLanchonete4.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(this, "Erro ao carregar Pedido pronto", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+            }
+        
+
+    }//GEN-LAST:event_jbPedidoProntoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -309,16 +413,17 @@ public class FormLanchonete4 extends javax.swing.JFrame {
         try {
                         
             Pedido filtro = new Pedido();                        
-            Pedido pedidos = new Pedido();                      
+            Pedido pedidos = new Pedido();
+            Atendente atendente = new Atendente();
             DadosPedido dadosPedidos = new DadosPedido();
             ArrayList<Pedido> listaPedidos = dadosPedidos.listar(filtro);
             DefaultTableModel modelo = new DefaultTableModel();
-            modelo.setColumnIdentifiers(new Object[]{"Código","Descrição", "Status"});
+            modelo.setColumnIdentifiers(new Object[]{"Código","Descrição","Atendente", "Status"});
             for (Pedido pedido : listaPedidos) {
-                modelo.addRow(new Object[]{pedido.getCod(),pedido.getDescricao(), pedido.getStatus()});
+                modelo.addRow(new Object[]{pedido.getCod(),pedido.getDescricao(),atendente.getNome(), pedido.getStatus()});
             }
             jTableConzinha.setModel(modelo);
-            //JOptionPane.showMessageDialog(this, "Aluno cadastrado");
+            JOptionPane.showMessageDialog(this, "**LISTA DE PEDIDOS ATUALIZADA**");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
@@ -326,11 +431,6 @@ public class FormLanchonete4 extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
@@ -339,6 +439,11 @@ public class FormLanchonete4 extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableConzinha;
     private javax.swing.JLabel jTitulo1;
+    private javax.swing.JButton jbAtendente1;
+    private javax.swing.JButton jbAtendente2;
+    private javax.swing.JButton jbAtendente3;
     private javax.swing.JButton jbAtualizar;
+    private javax.swing.JButton jbPedidoEntregue;
+    private javax.swing.JButton jbPedidoPronto;
     // End of variables declaration//GEN-END:variables
 }

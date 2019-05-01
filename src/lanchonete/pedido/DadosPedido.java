@@ -76,7 +76,7 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
         ArrayList<Pedido> retorno = new ArrayList<>();
 
         //instrução sql listando pedidos
-        String sql = " select cod_pedido, data_pedido, hora_pedido, descricao_pedido, status_pedido, obs_pedido,  cod_cliente, cod_atendente";
+        String sql = " select cod_pedido, data_pedido, hora_pedido, descricao_pedido, status_pedido, obs_pedido,  cod_cliente, nome_atendente";
         sql += " from Pedido as p ";
         sql += " where p.cod_pedido > 0 ";
         if (filtro.getCod() > 0) {
@@ -93,8 +93,14 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
         //lendo os resultados
         while (leitor.next()) {
             Pedido p = new Pedido();
+            Atendente a = new Atendente();
             p.setCod(leitor.getInt("cod_pedido"));
             p.setDescricao(leitor.getString("descricao_pedido"));
+            /* Inserido*/
+            p.setStatus(leitor.getString("status_pedido"));
+            a.setNome(leitor.getString("nome_atendente"));
+
+
             retorno.add(p);
         }
         //fechando a conexão com o banco de dados
@@ -112,6 +118,49 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
         PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
         //passando os valores para os parametros
         preparedStatement.setInt(1, p);
+        // execute insert SQL stetement
+        preparedStatement.executeUpdate();
+        //fechando a conexão com o banco de dados
+        super.desconectar();
+    }
+    
+        public void atualizarPedido(String p, int cod) throws SQLException, Exception {
+        //instrucao a ser executada
+        String sql = "UPDATE pedido SET nome_atendente = ? WHERE cod_pedido = ? ";
+        //preparando a instrução
+        PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
+        //passando os valores para os parametros
+        preparedStatement.setString(1, p);
+        preparedStatement.setInt(2, cod);
+        // execute insert SQL stetement
+        preparedStatement.executeUpdate();
+        //fechando a conexão com o banco de dados
+        super.desconectar();
+    }
+        
+        public void atualizarStatus(String p, int cod) throws SQLException, Exception {
+        //instrucao a ser executada
+        String sql = "UPDATE pedido SET status_pedido = ? WHERE cod_pedido = ? ";
+        //preparando a instrução
+        PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
+        //passando os valores para os parametros
+        preparedStatement.setString(1, p);
+        preparedStatement.setInt(2, cod);
+        // execute insert SQL stetement
+        preparedStatement.executeUpdate();
+        //fechando a conexão com o banco de dados
+        super.desconectar();
+    }
+        
+        
+        public void atualizarPedidoEntregue(String p, int cod) throws SQLException, Exception {
+        //instrucao a ser executada
+        String sql = "UPDATE pedido SET status_pedido = ? WHERE cod_pedido = ? ";
+        //preparando a instrução
+        PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
+        //passando os valores para os parametros
+        preparedStatement.setString(1, p);
+        preparedStatement.setInt(2, cod);
         // execute insert SQL stetement
         preparedStatement.executeUpdate();
         //fechando a conexão com o banco de dados
