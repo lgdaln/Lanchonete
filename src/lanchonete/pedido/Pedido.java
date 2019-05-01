@@ -8,16 +8,16 @@ public class Pedido {
     private String descricao;
     private String status;
     private String obs;
-    private String atendente;
+    private int cod_atendente;
 
-    public String getAtendente() {
-        return atendente;
+    public int getCod_atendente() {
+        return cod_atendente;
     }
 
-    public void setAtendente(String atendente) {
-        this.atendente = atendente;
+    public void setCod_atendente(int cod_atendente) {
+        this.cod_atendente = cod_atendente;
     }
-    
+
 
     public int getCod() {
         return cod;

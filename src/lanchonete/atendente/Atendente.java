@@ -6,6 +6,8 @@ package lanchonete.atendente;
 public class Atendente {
     private int cod;
     private String nome;
+    
+    
 
     
     public int getCod() {
@@ -23,4 +25,6 @@ public class Atendente {
     public void setNome(String nome) {
         this.nome = nome;
     }
+    
+
 }

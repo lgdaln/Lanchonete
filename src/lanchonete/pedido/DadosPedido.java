@@ -76,7 +76,7 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
         ArrayList<Pedido> retorno = new ArrayList<>();
 
         //instrução sql listando pedidos
-        String sql = " select cod_pedido, data_pedido, hora_pedido, descricao_pedido, status_pedido, obs_pedido,  cod_cliente, nome_atendente";
+        String sql = " select cod_pedido, data_pedido, hora_pedido, descricao_pedido, status_pedido, obs_pedido,  cod_cliente, cod_atendente";
         sql += " from Pedido as p ";
         sql += " where p.cod_pedido > 0 ";
         if (filtro.getCod() > 0) {
@@ -98,7 +98,7 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
             p.setDescricao(leitor.getString("descricao_pedido"));
             /* Inserido*/
             p.setStatus(leitor.getString("status_pedido"));
-            a.setNome(leitor.getString("nome_atendente"));
+            p.setCod_atendente(leitor.getInt("cod_atendente"));
 
 
             retorno.add(p);
@@ -124,13 +124,13 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
         super.desconectar();
     }
     
-        public void atualizarPedido(String p, int cod) throws SQLException, Exception {
+        public void atualizarPedido(int p, int cod) throws SQLException, Exception {
         //instrucao a ser executada
-        String sql = "UPDATE pedido SET nome_atendente = ? WHERE cod_pedido = ? ";
+        String sql = "UPDATE pedido SET cod_atendente = ? WHERE cod_pedido = ? ";
         //preparando a instrução
         PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
         //passando os valores para os parametros
-        preparedStatement.setString(1, p);
+        preparedStatement.setInt(1, p);
         preparedStatement.setInt(2, cod);
         // execute insert SQL stetement
         preparedStatement.executeUpdate();
