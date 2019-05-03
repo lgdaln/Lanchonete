@@ -66,6 +66,7 @@ public class FormCozinha extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("COZINHA");
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(19, 18, 19));
         jPanel1.setForeground(new java.awt.Color(204, 204, 204));

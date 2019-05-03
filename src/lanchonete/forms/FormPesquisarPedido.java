@@ -48,6 +48,7 @@ public class FormPesquisarPedido extends javax.swing.JFrame {
         jTableListaPedidos2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(19, 18, 19));
 

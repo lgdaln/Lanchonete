@@ -42,7 +42,8 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
      */
     public FormCardapiodoDia() {
         initComponents();
-        setLocationRelativeTo(null);  
+        setLocationRelativeTo(null);
+        AtualizarCardapiodoBanconaTela();
 
     }
 
@@ -96,6 +97,7 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("LISTA DO CARDÁPIO DO DIA");
+        setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -139,21 +141,37 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("VALOR (R$)");
 
+        jtfValor1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("DESCRIÇÃO");
 
+        jtfValor2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+
+        jtfValor9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+
+        jtfValor3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jtfValor3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfValor3ActionPerformed(evt);
             }
         });
 
+        jtfValor4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+
+        jtfValor5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+
+        jtfValor6.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jtfValor6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfValor6ActionPerformed(evt);
             }
         });
+
+        jtfValor7.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+
+        jtfValor8.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/water.png"))); // NOI18N
 
@@ -468,7 +486,8 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
     }
     
     /**
-     * Atualiza os dados do cardapio de acordo com o código informado.
+     * Atualiza os dados do cardapio de acordo com oq for escrito na tela
+     * Chamado pelo botão jbCarregarCardapio.
      * @param cod_cardapio 
      */
     public void atualizarCardapio(int cod_cardapio){
@@ -477,6 +496,64 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(FormCardapiodoDia.class.getName()).log(Level.SEVERE, null, ex);
         }        
+    }
+    
+    /**
+     * Atualiza os dados do cardapio na tela de acordo com oq está no banco
+     * Chamado pela inicialização da tela.
+     */
+    public void AtualizarCardapiodoBanconaTela(){
+        try {
+            modelCardapio = dadosCardapio.ListarCardapio(cardapio);
+        } catch (Exception ex) {
+            Logger.getLogger(FormCardapiodoDia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jtf1.removeAll();
+        jtf1.setText(modelCardapio.get(0).getNome_cardapio());
+        jtfValor1.removeAll();
+        jtfValor1.setText(String.valueOf(modelCardapio.get(0).getValor_cardapio()));
+        
+        jtf2.removeAll();
+        jtf2.setText(modelCardapio.get(1).getNome_cardapio());
+        jtfValor2.removeAll();
+        jtfValor2.setText(String.valueOf(modelCardapio.get(1).getValor_cardapio()));       
+        
+        jtf3.removeAll();
+        jtf3.setText(modelCardapio.get(2).getNome_cardapio());
+        jtfValor3.removeAll();
+        jtfValor3.setText(String.valueOf(modelCardapio.get(2).getValor_cardapio()));
+        
+        jtf4.removeAll();
+        jtf4.setText(modelCardapio.get(3).getNome_cardapio());
+        jtfValor4.removeAll();
+        jtfValor4.setText(String.valueOf(modelCardapio.get(3).getValor_cardapio()));
+        
+        jtf5.removeAll();
+        jtf5.setText(modelCardapio.get(4).getNome_cardapio());
+        jtfValor5.removeAll();
+        jtfValor5.setText(String.valueOf(modelCardapio.get(4).getValor_cardapio()));
+        
+        jtf6.removeAll();
+        jtf6.setText(modelCardapio.get(5).getNome_cardapio());
+        jtfValor6.removeAll();
+        jtfValor6.setText(String.valueOf(modelCardapio.get(5).getValor_cardapio()));
+        
+        jtf7.removeAll();
+        jtf7.setText(modelCardapio.get(6).getNome_cardapio());
+        jtfValor7.removeAll();
+        jtfValor7.setText(String.valueOf(modelCardapio.get(6).getValor_cardapio()));
+        
+        jtf8.removeAll();
+        jtf8.setText(modelCardapio.get(7).getNome_cardapio());
+        jtfValor8.removeAll();
+        jtfValor8.setText(String.valueOf(modelCardapio.get(7).getValor_cardapio()));
+        
+        jtf9.removeAll();
+        jtf9.setText(modelCardapio.get(8).getNome_cardapio());
+        jtfValor9.removeAll();
+        jtfValor9.setText(String.valueOf(modelCardapio.get(8).getValor_cardapio()));
+     
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
