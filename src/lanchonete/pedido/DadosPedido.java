@@ -168,6 +168,23 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
         super.desconectar();
     }
         
+        
+        public void cadastrarPedido(Pedido p) throws SQLException, Exception {
+        //instrucao a ser executada
+        String sql = "INSERT INTO pedido (descricao_pedido) ";
+        sql += " VALUES (?)";
+        //preparando a instrução
+        PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
+        //passando os valores para os parametros
+        preparedStatement.setString(1, p.getDescricao());
+        // execute insert SQL stetement
+        preparedStatement.executeUpdate();
+        //fechando a conexão com o banco de dados
+        super.desconectar();
+    }
+        
+        
+        
 
 
 

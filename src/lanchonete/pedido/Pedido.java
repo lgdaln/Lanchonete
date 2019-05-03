@@ -9,6 +9,16 @@ public class Pedido {
     private String status;
     private String obs;
     private int cod_atendente;
+    private int cod_cliente;
+
+    public int getCod_cliente() {
+        return cod_cliente;
+    }
+
+    public void setCod_cliente(int cod_cliente) {
+        this.cod_cliente = cod_cliente;
+    }
+
 
     public int getCod_atendente() {
         return cod_atendente;

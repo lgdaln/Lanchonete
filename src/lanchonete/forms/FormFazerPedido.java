@@ -8,10 +8,17 @@ package lanchonete.forms;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import lanchonete.atendente.Atendente;
 import lanchonete.cardapio.Cardapio;
 import lanchonete.cardapio.DadosCardapio;
 import lanchonete.cliente.Cliente;
 import lanchonete.cliente.DadosCliente;
+import lanchonete.pedido.DadosPedido;
+import lanchonete.pedido.Pedido;
+import lanchonete.produto.DadosProduto;
+import lanchonete.produto.Produto;
 
 
 
@@ -25,8 +32,15 @@ public class FormFazerPedido extends javax.swing.JFrame {
     Cardapio cardapio = new Cardapio();
     ArrayList<Cardapio> modelCardapio = new ArrayList<>();
     DadosCardapio dadosCardapio = new DadosCardapio();
+    
     Cliente modelCliente = new Cliente();
     DadosCliente dadosCliente = new DadosCliente();
+    
+    Produto modelProduto = new Produto();
+    DadosProduto dadosProduto = new DadosProduto();
+    
+    Pedido modelPedido = new Pedido();
+    DadosPedido dadosPedido = new DadosPedido();
     
 
 
@@ -61,7 +75,7 @@ public class FormFazerPedido extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jbProduto1 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -104,7 +118,12 @@ public class FormFazerPedido extends javax.swing.JFrame {
 
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/bread.png"))); // NOI18N
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/water.png"))); // NOI18N
+        jbProduto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/water.png"))); // NOI18N
+        jbProduto1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbProduto1ActionPerformed(evt);
+            }
+        });
 
         jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/bread.png"))); // NOI18N
 
@@ -119,6 +138,11 @@ public class FormFazerPedido extends javax.swing.JFrame {
 
         jtf1.setEditable(false);
         jtf1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jtf1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtf1ActionPerformed(evt);
+            }
+        });
 
         jtf9.setEditable(false);
         jtf9.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -194,7 +218,7 @@ public class FormFazerPedido extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtf6, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jbProduto1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jtf1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -207,7 +231,7 @@ public class FormFazerPedido extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jtf1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(jbProduto1))
                 .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jtf2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -442,6 +466,24 @@ public class FormFazerPedido extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jbIniciarPedidoActionPerformed
 
+    private void jbProduto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbProduto1ActionPerformed
+        // TODO add your handling code here:  
+        modelPedido.setDescricao(modelCardapio.get(0).getNome_cardapio());
+        try {
+            dadosPedido.cadastrarPedido(modelPedido);
+        } catch (Exception ex) {
+            Logger.getLogger(FormFazerPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    
+        
+    }//GEN-LAST:event_jbProduto1ActionPerformed
+
+    private void jtf1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtf1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtf1ActionPerformed
+
+ 
     
     
     
@@ -516,7 +558,6 @@ public class FormFazerPedido extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -534,6 +575,7 @@ public class FormFazerPedido extends javax.swing.JFrame {
     private javax.swing.JButton jbCancelarPedido;
     private javax.swing.JButton jbFinalizarPedido;
     private javax.swing.JButton jbIniciarPedido;
+    private javax.swing.JButton jbProduto1;
     private javax.swing.JTable jtPedido;
     private javax.swing.JTextField jtf1;
     private javax.swing.JTextField jtf2;

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import lanchonete.ConexaoBanco;
 import lanchonete.atendente.Atendente;
 import lanchonete.pedido.Pedido;
+import lanchonete.produto.Produto;
 
 public class DadosCardapio extends ConexaoBanco{
     
@@ -42,6 +43,23 @@ public class DadosCardapio extends ConexaoBanco{
         //fechando a conexão com o banco de dados
         super.desconectar();
         return retorno;
+    }
+     
+
+         
+        public void atualizarCardapio(Cardapio c, int cod_cardapio) throws SQLException, Exception {
+        //instrucao a ser executada
+        String sql = "UPDATE cardapiododia SET nome_cardapio = ?, valor_cardapio = ? WHERE cod_cardapio = ? ";
+        //preparando a instrução
+        PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
+        //passando os valores para os parametros
+        preparedStatement.setString(1, c.getNome_cardapio());
+        preparedStatement.setDouble(2, c.getValor_cardapio());
+        preparedStatement.setInt(3, cod_cardapio);
+        // execute insert SQL stetement
+        preparedStatement.executeUpdate();
+        //fechando a conexão com o banco de dados
+        super.desconectar();
     }
     
 }
