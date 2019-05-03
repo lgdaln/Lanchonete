@@ -49,5 +49,5 @@ public class DadosCliente extends ConexaoBanco {
         preparedStatement.executeUpdate();
         //fechando a conexão com o banco de dados
         super.desconectar();
-    }
+    } 
 }

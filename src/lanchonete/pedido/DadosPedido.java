@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import lanchonete.ConexaoBanco;
 import lanchonete.atendente.Atendente;
 import lanchonete.cliente.Cliente;
+import lanchonete.produto.Produto;
 
 
 public class DadosPedido extends ConexaoBanco {
@@ -166,7 +167,7 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
         //fechando a conexão com o banco de dados
         super.desconectar();
     }
-
+        
 
 
 
