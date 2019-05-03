@@ -12,7 +12,7 @@ import lanchonete.pedido.Pedido;
 public class DadosAtendente extends ConexaoBanco{
     
     
-     public ArrayList<Atendente> listar(Atendente filtro) throws Exception {
+     public ArrayList<Atendente> ListarAtendentes(Atendente filtro) throws Exception {
         ArrayList<Atendente> retorno = new ArrayList<>();
 
         //instrução sql listando atendentes

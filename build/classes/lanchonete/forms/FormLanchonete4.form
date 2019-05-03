@@ -250,9 +250,9 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jlAtendente2" min="-2" pref="146" max="-2" attributes="0"/>
+                                  <Component id="jlAtendente3" min="-2" pref="146" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jlAtendente3" min="-2" pref="146" max="-2" attributes="0"/>
+                                      <Component id="jlAtendente2" min="-2" pref="146" max="-2" attributes="0"/>
                                       <EmptySpace pref="67" max="32767" attributes="0"/>
                                       <Component id="jButton1" min="-2" pref="186" max="-2" attributes="0"/>
                                   </Group>
@@ -274,13 +274,13 @@
                       <EmptySpace pref="28" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jbAtendente2" alignment="1" min="-2" pref="57" max="-2" attributes="0"/>
-                          <Component id="jlAtendente3" alignment="1" min="-2" pref="57" max="-2" attributes="0"/>
+                          <Component id="jlAtendente2" alignment="1" min="-2" pref="57" max="-2" attributes="0"/>
                           <Component id="jButton1" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jbAtendente3" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jlAtendente2" alignment="1" min="-2" pref="57" max="-2" attributes="0"/>
+                          <Component id="jlAtendente3" alignment="1" min="-2" pref="57" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -334,7 +334,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAtendente2ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jlAtendente3">
+            <Component class="javax.swing.JLabel" name="jlAtendente2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="24" style="0"/>
@@ -359,7 +359,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAtendente3ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JLabel" name="jlAtendente2">
+            <Component class="javax.swing.JLabel" name="jlAtendente3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="24" style="0"/>

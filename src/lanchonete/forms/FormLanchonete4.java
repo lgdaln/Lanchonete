@@ -24,6 +24,9 @@ public class FormLanchonete4 extends javax.swing.JFrame {
     
         ArrayList<DadosPedido> listaPedidos = new ArrayList<>();
         Atendente atendente = new Atendente();
+        ArrayList<DadosAtendente> listarAtendentes = new ArrayList<>();
+        DadosAtendente dadosAtendente = new DadosAtendente();
+        ArrayList<Atendente> modelAtendente = new ArrayList<>();
 
 
     /**
@@ -57,9 +60,9 @@ public class FormLanchonete4 extends javax.swing.JFrame {
         jbAtendente1 = new javax.swing.JButton();
         jlAtendente1 = new javax.swing.JLabel();
         jbAtendente2 = new javax.swing.JButton();
-        jlAtendente3 = new javax.swing.JLabel();
-        jbAtendente3 = new javax.swing.JButton();
         jlAtendente2 = new javax.swing.JLabel();
+        jbAtendente3 = new javax.swing.JButton();
+        jlAtendente3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("COZINHA");
@@ -163,10 +166,10 @@ public class FormLanchonete4 extends javax.swing.JFrame {
             }
         });
 
-        jlAtendente3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jlAtendente3.setForeground(new java.awt.Color(255, 255, 51));
-        jlAtendente3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlAtendente3.setText("Atendente 2");
+        jlAtendente2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jlAtendente2.setForeground(new java.awt.Color(255, 255, 51));
+        jlAtendente2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlAtendente2.setText("Atendente 2");
 
         jbAtendente3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jbAtendente3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-cozinheiro-48.png"))); // NOI18N
@@ -176,10 +179,10 @@ public class FormLanchonete4 extends javax.swing.JFrame {
             }
         });
 
-        jlAtendente2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jlAtendente2.setForeground(new java.awt.Color(255, 255, 51));
-        jlAtendente2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jlAtendente2.setText("Atendente 3");
+        jlAtendente3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jlAtendente3.setForeground(new java.awt.Color(255, 255, 51));
+        jlAtendente3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jlAtendente3.setText("Atendente 3");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -198,9 +201,9 @@ public class FormLanchonete4 extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jlAtendente2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jlAtendente3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jlAtendente3, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jlAtendente2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(38, 38, 38))
@@ -215,12 +218,12 @@ public class FormLanchonete4 extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbAtendente2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jlAtendente3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jlAtendente2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbAtendente3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jlAtendente2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jlAtendente3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -335,8 +338,7 @@ public class FormLanchonete4 extends javax.swing.JFrame {
     }//GEN-LAST:event_jbCancelarPedidoActionPerformed
 
     private void jbAtendente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtendente1ActionPerformed
-        // TODO add your handling code here:
-        
+
         int cod_atendente = 1;
         int linha = jTableConzinha.getSelectedRow();
         int codigoPedido = (int) jTableConzinha.getValueAt(linha, 0);
@@ -412,21 +414,26 @@ public class FormLanchonete4 extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jbPedidoProntoActionPerformed
 
+    
+    /**
+     * Atualiza a lista de atendentes buscando os nomes no banco.
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
             try {
                 // TODO add your handling code here:
-                DadosAtendente da = new DadosAtendente();
+
+                modelAtendente = dadosAtendente.ListarAtendentes(atendente);
+                jlAtendente1.removeAll();
+                jlAtendente1.setText(modelAtendente.get(0).getNome());
                 
-                String atendente1 = "Luiz";
-                this.jlAtendente1.setText(String.valueOf(atendente1));
+                modelAtendente = dadosAtendente.ListarAtendentes(atendente);
+                jlAtendente3.removeAll();
+                jlAtendente3.setText(modelAtendente.get(1).getNome());
                 
-                String atendente2 = "Pedro";
-                this.jlAtendente2.setText(String.valueOf(atendente2));
-                
-                String atendente3 = "Maria";
-                this.jlAtendente3.setText(String.valueOf(atendente3));
-                
-                
+                modelAtendente = dadosAtendente.ListarAtendentes(atendente);
+                jlAtendente2.removeAll();
+                jlAtendente2.setText(modelAtendente.get(2).getNome());
                 
                 
             } catch (Exception ex) {
