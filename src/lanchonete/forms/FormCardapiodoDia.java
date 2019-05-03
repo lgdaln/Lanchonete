@@ -94,7 +94,7 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/water.png"))); // NOI18N
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("LISTA DO CARDÁPIO DO DIA");
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
@@ -415,7 +415,7 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
 
         
         } catch (Exception ex) {
-                Logger.getLogger(FormLanchonete4.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, "Erro ao atulizar o cardápio!", "ERRO", JOptionPane.ERROR_MESSAGE);
             
         }

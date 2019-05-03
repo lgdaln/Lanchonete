@@ -20,7 +20,7 @@ import lanchonete.pedido.Pedido;
  *
  * @author lgdal
  */
-public class FormLanchonete4 extends javax.swing.JFrame {
+public class FormCozinha extends javax.swing.JFrame {
     
         ArrayList<DadosPedido> listaPedidos = new ArrayList<>();
         Atendente atendente = new Atendente();
@@ -32,7 +32,7 @@ public class FormLanchonete4 extends javax.swing.JFrame {
     /**
      * Creates new form FormLanchonete4
      */
-    public FormLanchonete4() {
+    public FormCozinha() {
         initComponents();
         setLocationRelativeTo(null);  
         carregarPedidos();
@@ -64,7 +64,7 @@ public class FormLanchonete4 extends javax.swing.JFrame {
         jbAtendente3 = new javax.swing.JButton();
         jlAtendente3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("COZINHA");
 
         jPanel1.setBackground(new java.awt.Color(19, 18, 19));
@@ -308,7 +308,7 @@ public class FormLanchonete4 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"Pedido entregue para o cliente!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
                 carregarPedidos();
             } catch (Exception ex) {
-                Logger.getLogger(FormLanchonete4.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, "Erro ao carregar Pedido entregue", "ERRO", JOptionPane.ERROR_MESSAGE);
 
             }
@@ -331,7 +331,7 @@ public class FormLanchonete4 extends javax.swing.JFrame {
 
 
             } catch (Exception ex) {
-                Logger.getLogger(FormLanchonete4.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, "Erro ao ecluir o pedido", "ERRO", JOptionPane.ERROR_MESSAGE);
 
             }
@@ -348,7 +348,7 @@ public class FormLanchonete4 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"Pedido direcionado para o Atendente 1!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
                 carregarPedidos();
             } catch (Exception ex) {
-                Logger.getLogger(FormLanchonete4.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, "Erro ao direcionado para o Atendente 1!", "ERRO", JOptionPane.ERROR_MESSAGE);
 
             }
@@ -369,7 +369,7 @@ public class FormLanchonete4 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"Pedido direcionado para o Atendente 2!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
                 carregarPedidos();
             } catch (Exception ex) {
-                Logger.getLogger(FormLanchonete4.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, "Erro ao direcionado para o Atendente 2!", "ERRO", JOptionPane.ERROR_MESSAGE);
 
             }
@@ -388,7 +388,7 @@ public class FormLanchonete4 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"Pedido direcionado para o Atendente 3!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
                 carregarPedidos();
             } catch (Exception ex) {
-                Logger.getLogger(FormLanchonete4.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, "Erro ao direcionado para o Atendente 3!", "ERRO", JOptionPane.ERROR_MESSAGE);
 
             }
@@ -406,7 +406,7 @@ public class FormLanchonete4 extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this,"Pedido pronto para o cliente!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
                 carregarPedidos();
             } catch (Exception ex) {
-                Logger.getLogger(FormLanchonete4.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(this, "Erro ao carregar Pedido pronto", "ERRO", JOptionPane.ERROR_MESSAGE);
 
             }
@@ -437,7 +437,7 @@ public class FormLanchonete4 extends javax.swing.JFrame {
                 
                 
             } catch (Exception ex) {
-                Logger.getLogger(FormLanchonete4.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
             }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -458,21 +458,23 @@ public class FormLanchonete4 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormLanchonete4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCozinha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormLanchonete4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCozinha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormLanchonete4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCozinha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormLanchonete4.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormCozinha.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormLanchonete4().setVisible(true);
+                new FormCozinha().setVisible(true);
             }
         });
     }
