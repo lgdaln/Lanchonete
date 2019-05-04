@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import lanchonete.ConexaoBanco;
+import lanchonete.cardapio.Cardapio;
 import lanchonete.pedido.Pedido;
 
 
@@ -43,6 +44,20 @@ public class DadosAtendente extends ConexaoBanco{
         //fechando a conexão com o banco de dados
         super.desconectar();
         return retorno;
+    }
+     
+    public void atualizarAtendentes(Atendente c, int cod_atendente) throws SQLException, Exception {
+        //instrucao a ser executada
+        String sql = "UPDATE atendente SET nome_atendente = ? WHERE cod_atendente = ? ";
+        //preparando a instrução
+        PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
+        //passando os valores para os parametros
+        preparedStatement.setString(1, c.getNome());
+        preparedStatement.setInt(2, cod_atendente);
+        // execute insert SQL stetement
+        preparedStatement.executeUpdate();
+        //fechando a conexão com o banco de dados
+        super.desconectar();
     }
     
 

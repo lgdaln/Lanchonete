@@ -43,6 +43,7 @@ public class FormPrincipal extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jbCardapiodoDia = new javax.swing.JButton();
         jbCozinha = new javax.swing.JButton();
+        jbAtendentes = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -126,6 +127,14 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
 
+        jbAtendentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-cozinheiro-48.png"))); // NOI18N
+        jbAtendentes.setText("ATUALIZAR FUNC.");
+        jbAtendentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAtendentesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -133,6 +142,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jbCardapiodoDia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jbCozinha, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+            .addComponent(jbAtendentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,7 +152,9 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addComponent(jbCardapiodoDia)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbCozinha)
-                .addGap(0, 134, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jbAtendentes)
+                .addGap(0, 87, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -216,6 +228,11 @@ public class FormPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jbSairActionPerformed
 
+    private void jbAtendentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtendentesActionPerformed
+        // TODO add your handling code here:
+        new FormAtendentes().setVisible(true);
+    }//GEN-LAST:event_jbAtendentesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -259,6 +276,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JButton jbAtendentes;
     private javax.swing.JButton jbCardapiodoDia;
     private javax.swing.JButton jbCozinha;
     private javax.swing.JButton jbFazerPedido;
