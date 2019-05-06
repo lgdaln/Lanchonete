@@ -5,12 +5,14 @@
  */
 package lanchonete.forms;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import lanchonete.atendente.Atendente;
 import lanchonete.cardapio.Cardapio;
 import lanchonete.cardapio.DadosCardapio;
 import lanchonete.cliente.Cliente;
@@ -19,6 +21,8 @@ import lanchonete.pedido.DadosPedido;
 import lanchonete.pedido.Pedido;
 import lanchonete.produto.DadosProduto;
 import lanchonete.produto.Produto;
+import java.util.Date;
+
 
 
 
@@ -43,6 +47,8 @@ public class FormFazerPedido extends javax.swing.JFrame {
     DadosPedido dadosPedido = new DadosPedido();
     
     Cardapio cardapio1 = new Cardapio();
+    
+    Cliente cliente = new Cliente();
 
     
 
@@ -133,6 +139,11 @@ public class FormFazerPedido extends javax.swing.JFrame {
         jbDeletarItem.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jbDeletarItem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-editar-34.png"))); // NOI18N
         jbDeletarItem.setText("Deletar");
+        jbDeletarItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbDeletarItemActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -570,9 +581,9 @@ public class FormFazerPedido extends javax.swing.JFrame {
                         .addComponent(jbCancelarPedido)
                         .addGap(18, 18, 18)
                         .addComponent(jbDeletarItem, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jbFinalizarPedido))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 717, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -673,14 +684,19 @@ public class FormFazerPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_jbAtualizarCardapioActionPerformed
 
     private void jbIniciarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbIniciarPedidoActionPerformed
-        //Cadastra o cliente que irá fazer o pedido
-        habilitarDesabilitarCampos(true);
-        modelCliente.setNome(jtfNome.getText());
-        try {
-            dadosCliente.cadastrarCliente(modelCliente);
-        } catch (Exception ex) {
-            Logger.getLogger(FormFazerPedido.class.getName()).log(Level.SEVERE, null, ex);
+        //Habilita os campos para a entrada do pedido.
+        
+        //Solicita que um nome seja inserido antes de iniciar o pedido
+        if (jtfNome.getText().equals("")) {
+            JOptionPane.showMessageDialog(this,"Entrar com seu nome antes de aperta o botão iniciar pedido", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            
+        } else {
+           habilitarDesabilitarCampos(true); 
         }
+        
+        
+        
+
         
 
         
@@ -771,11 +787,71 @@ public class FormFazerPedido extends javax.swing.JFrame {
     private void jbCancelarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarPedidoActionPerformed
         // TODO add your handling code here:
         limparCampos();
+        habilitarDesabilitarCampos(false);
     }//GEN-LAST:event_jbCancelarPedidoActionPerformed
 
     private void jbFinalizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFinalizarPedidoActionPerformed
         // TODO add your handling code here:
+
+        Pedido pedido = new Pedido();
+
+        //Cadastra o cliente que irá fazer o pedido
+        modelCliente.setNome(jtfNome.getText());
+        try {
+            dadosCliente.cadastrarCliente(modelCliente);
+            pedido.setCod_cliente(dadosCliente.retornaIdCliente());
+
+            // Cadastra o pedido na tabela pedido do banco de dados
+            int cont = jtPedido.getRowCount();
+            for (int i = 0; i < cont; i++) {
+                pedido.setDescricao((String) jtPedido.getValueAt(i, 0));
+                pedido.setCod_cliente(dadosCliente.retornaIdCliente());
+                pedido.setData(converterDataParaDateUS(new java.util.Date(System.currentTimeMillis())));
+
+                dadosPedido.cadastrarPedido(pedido);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(FormFazerPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        limparCampos();
+        habilitarDesabilitarCampos(false);
+
     }//GEN-LAST:event_jbFinalizarPedidoActionPerformed
+
+   /**
+     * Converte data tipo date para o formato americano yyyy/MM/dd também tipo date
+     * Date para Date
+     * @param pData
+     * @return
+     * @throws Exception 
+     */
+     public java.sql.Date converterDataParaDateUS(Date pData) throws Exception {   
+        SimpleDateFormat formatarDate = new SimpleDateFormat("yyyy/MM/dd");
+        String dataString = formatarDate.format(pData);
+         if (pData == null || pData.equals(""))  
+            return null;  
+          
+        java.sql.Date date = null;  
+        try {  
+            DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
+            date = new java.sql.Date( ((java.util.Date)formatter.parse(dataString)).getTime() );  
+        } catch (ParseException e) {              
+            throw e;  
+        }  
+        return date;  
+    }   
+    
+    
+    private void jbDeletarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDeletarItemActionPerformed
+        // Deleta um item selecionado da tabela:
+        DefaultTableModel deletaItem = (DefaultTableModel)jtPedido.getModel();
+        int linha = jtPedido.getSelectedRow();
+        deletaItem.removeRow(linha);
+        somarValorTotal();
+        
+    }//GEN-LAST:event_jbDeletarItemActionPerformed
 
  
     
@@ -883,8 +959,11 @@ public class FormFazerPedido extends javax.swing.JFrame {
         jtfNome.setText("");
         jtValorTotal.setText("");
         
-        DefaultTableModel modelo = (DefaultTableModel) new DefaultTableModel();
+        DefaultTableModel modelo = (DefaultTableModel) jtPedido.getModel();        
         modelo.setNumRows(0);
+        
+        
+
 
     }
     
@@ -898,6 +977,8 @@ public class FormFazerPedido extends javax.swing.JFrame {
         jbProduto7.setEnabled(condicao);
         jbProduto8.setEnabled(condicao);
         jbProduto9.setEnabled(condicao);
+        jbFinalizarPedido.setEnabled(condicao);
+        jbDeletarItem.setEnabled(condicao);
 
     }
     

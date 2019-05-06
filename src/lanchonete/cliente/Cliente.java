@@ -5,6 +5,15 @@ package lanchonete.cliente;
 public class Cliente {
     private int cod;
     private String nome;
+    private int ultimo_cod;
+
+    public int getUltimo_cod() {
+        return ultimo_cod;
+    }
+
+    public void setUltimo_cod(int ultimo_cod) {
+        this.ultimo_cod = ultimo_cod;
+    }
 
     
     

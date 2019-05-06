@@ -505,9 +505,7 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
     public void AtualizarCardapiodoBanconaTela(){
         try {
             modelCardapio = dadosCardapio.ListarCardapio(cardapio);
-        } catch (Exception ex) {
-            Logger.getLogger(FormCardapiodoDia.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
         jtf1.removeAll();
         jtf1.setText(modelCardapio.get(0).getNome_cardapio());
         jtfValor1.removeAll();
@@ -552,6 +550,10 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
         jtf9.setText(modelCardapio.get(8).getNome_cardapio());
         jtfValor9.removeAll();
         jtfValor9.setText(String.valueOf(modelCardapio.get(8).getValor_cardapio()));
+        
+                } catch (Exception ex) {
+            Logger.getLogger(FormCardapiodoDia.class.getName()).log(Level.SEVERE, null, ex);
+        }
      
         
     }

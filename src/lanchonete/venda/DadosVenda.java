@@ -32,7 +32,7 @@ public class DadosVenda extends ConexaoBanco {
         while (leitor.next()) {
             Pedido p = new Pedido();
             p.setCod(leitor.getInt("cod_pedido"));
-            p.setData(leitor.getString("data_pedido"));
+            p.setData(leitor.getDate("data_pedido"));
             p.setDescricao(leitor.getString("descricao_pedido"));
             p.setHora(leitor.getString("hora_pedido"));
             p.setObs(leitor.getString("obs_pedido"));

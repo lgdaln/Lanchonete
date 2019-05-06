@@ -1,6 +1,7 @@
 
 package lanchonete.pedido;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -171,12 +172,14 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
         
         public void cadastrarPedido(Pedido p) throws SQLException, Exception {
         //instrucao a ser executada
-        String sql = "INSERT INTO pedido (descricao_pedido) ";
-        sql += " VALUES (?)";
+        String sql = "INSERT INTO pedido (descricao_pedido, cod_cliente, data_pedido) ";
+        sql += " VALUES (?, ?, ?)";
         //preparando a instrução
         PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
         //passando os valores para os parametros
         preparedStatement.setString(1, p.getDescricao());
+        preparedStatement.setInt(2, p.getCod_cliente());
+        preparedStatement.setDate(3, (Date) p.getData());
         // execute insert SQL stetement
         preparedStatement.executeUpdate();
         //fechando a conexão com o banco de dados

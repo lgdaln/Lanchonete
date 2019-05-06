@@ -1,9 +1,11 @@
 package lanchonete.pedido;
 
+import java.util.Date;
+
 public class Pedido {
 
     private int cod;
-    private String data;
+    private Date data;
     private String hora;
     private String descricao;
     private String status;
@@ -37,13 +39,15 @@ public class Pedido {
         this.cod = cod;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
+
+
 
     public String getHora() {
         return hora;
