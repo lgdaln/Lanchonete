@@ -22,6 +22,8 @@ import lanchonete.pedido.Pedido;
 import lanchonete.produto.DadosProduto;
 import lanchonete.produto.Produto;
 import java.util.Date;
+import lanchonete.venda.DadosVenda;
+import lanchonete.venda.Venda;
 
 
 
@@ -49,6 +51,9 @@ public class FormFazerPedido extends javax.swing.JFrame {
     Cardapio cardapio1 = new Cardapio();
     
     Cliente cliente = new Cliente();
+    
+    DadosVenda dadosVenda = new DadosVenda();
+    Venda venda = new Venda();
 
     
 
@@ -794,6 +799,7 @@ public class FormFazerPedido extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         Pedido pedido = new Pedido();
+        venda = new Venda();
 
         //Cadastra o cliente que irá fazer o pedido
         modelCliente.setNome(jtfNome.getText());
@@ -807,12 +813,19 @@ public class FormFazerPedido extends javax.swing.JFrame {
                 pedido.setDescricao((String) jtPedido.getValueAt(i, 0));
                 pedido.setCod_cliente(dadosCliente.retornaIdCliente());
                 pedido.setData(converterDataParaDateUS(new java.util.Date(System.currentTimeMillis())));
-
+                venda.setValor((Double) jtPedido.getValueAt(i, 1));
                 dadosPedido.cadastrarPedido(pedido);
+                pedido.setCod(dadosPedido.retornaIdPedido());
+                
+                
+                dadosVenda.registrarVenda(pedido, venda);
             }
+            JOptionPane.showMessageDialog(this,"Pedido finalizado", "INFORMAÇÃO", JOptionPane.INFORMATION_MESSAGE);
+
 
         } catch (Exception ex) {
             Logger.getLogger(FormFazerPedido.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this,"Problema no pedido. Tente novamente", "ERRO", JOptionPane.ERROR);
         }
         
         limparCampos();

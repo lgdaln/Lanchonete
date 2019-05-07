@@ -1,10 +1,13 @@
 
 package lanchonete.venda;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import lanchonete.ConexaoBanco;
+import lanchonete.cliente.Cliente;
 import lanchonete.pedido.Pedido;
 import lanchonete.produto.Produto;
 
@@ -79,4 +82,26 @@ public class DadosVenda extends ConexaoBanco {
     public Iterable<Produto> listar(Venda filtro) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+    public void registrarVenda(Pedido p, Venda v) throws SQLException, Exception {
+        //instrucao a ser executada
+        String sql = "INSERT INTO venda (valor_venda, fk_cod_pedido) ";
+        sql += " VALUES (?, ?)";
+        //preparando a instrução
+        PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
+        //passando os valores para os parametros
+        preparedStatement.setDouble(1, v.getValor());
+        preparedStatement.setInt(2, p.getCod());
+        // execute insert SQL stetement
+        preparedStatement.executeUpdate();
+        //fechando a conexão com o banco de dados
+        super.desconectar();
+    }
+    
+    
+    
+    
+    
 }
+
+

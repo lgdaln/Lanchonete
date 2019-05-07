@@ -186,6 +186,35 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
         super.desconectar();
     }
         
+            /**
+     * Retorna o codigo/ID do último pedido que entrou na tabela pedido.
+     * @return
+     * @throws SQLException
+     * @throws Exception 
+     */
+    public int retornaIdPedido() throws SQLException, Exception {
+        int ultimo = 0;
+        try {
+            String sql = "select max(cod_pedido) from pedido";
+            PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
+            ResultSet leitor = preparedStatement.executeQuery();
+
+            while (leitor.next()) {
+                ultimo = leitor.getInt("max(cod_pedido)");
+            }
+
+            return ultimo;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 200;
+        } finally {
+            super.desconectar();
+
+        }
+
+    }
+        
         
         
 

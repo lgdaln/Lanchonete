@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import lanchonete.ConexaoBanco;
 import lanchonete.atendente.Atendente;
 import lanchonete.cliente.Cliente;
@@ -37,6 +38,8 @@ public class DadosPedidoCliente  extends ConexaoBanco {
                 pedido.setCod(leitor.getInt("cod_pedido"));
                 
                 cliente.setNome(leitor.getString("nome_cliente"));
+                
+                pedido.setDescricao(leitor.getString("descricao_pedido"));
                 
                 pedido.setStatus(leitor.getString("status_pedido"));
 
@@ -98,6 +101,6 @@ public class DadosPedidoCliente  extends ConexaoBanco {
         }
         return listaPedidoCliente;
     }
-    
-       
+        
+      
     }
