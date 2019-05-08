@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lanchonete.forms;
 
 import java.util.ArrayList;
@@ -11,11 +6,9 @@ import java.util.logging.Logger;
 import lanchonete.atendente.Atendente;
 import lanchonete.atendente.DadosAtendente;
 
-/**
- *
- * @author lgdal
- */
+
 public class FormAtendentes extends javax.swing.JFrame {
+
     Atendente atendente = new Atendente();
     DadosAtendente dadosAtendente = new DadosAtendente();
     ArrayList<Atendente> listaAtendentes = new ArrayList<>();
@@ -113,19 +106,19 @@ public class FormAtendentes extends javax.swing.JFrame {
 
     private void jbCarregarNomesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCarregarNomesActionPerformed
         // Carrega os nomes da tela para o banco de dados
-        try {     
+        try {
             atendente.setNome((jtfNomeCozinheiro1.getText()));
             int cod_atendente = 1;
             dadosAtendente.atualizarAtendentes(atendente, cod_atendente);
-            
+
             atendente.setNome((jtfNomeCozinheiro2.getText()));
             cod_atendente = 2;
             dadosAtendente.atualizarAtendentes(atendente, cod_atendente);
-            
+
             atendente.setNome((jtfNomeCozinheiro3.getText()));
             cod_atendente = 3;
             dadosAtendente.atualizarAtendentes(atendente, cod_atendente);
-            
+
         } catch (Exception ex) {
             Logger.getLogger(FormAtendentes.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -166,22 +159,22 @@ public class FormAtendentes extends javax.swing.JFrame {
             }
         });
     }
-    
+
     /**
      * Carrega os nomes que estão no banco para a tela.
      */
     public void AtualizarAtendentesdoBanconaTela() {
         try {
-            listaAtendentes = dadosAtendente.ListarAtendentes(atendente);
+        listaAtendentes = dadosAtendente.ListarAtendentes(atendente);
         } catch (Exception ex) {
             Logger.getLogger(FormCardapiodoDia.class.getName()).log(Level.SEVERE, null, ex);
         }
         jtfNomeCozinheiro1.removeAll();
         jtfNomeCozinheiro1.setText(String.valueOf(listaAtendentes.get(0).getNome()));
-        
+
         jtfNomeCozinheiro2.removeAll();
         jtfNomeCozinheiro2.setText(String.valueOf(listaAtendentes.get(1).getNome()));
-        
+
         jtfNomeCozinheiro3.removeAll();
         jtfNomeCozinheiro3.setText(String.valueOf(listaAtendentes.get(2).getNome()));
 

@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lanchonete.forms;
-
 
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -16,25 +10,20 @@ import lanchonete.atendente.DadosAtendente;
 import lanchonete.pedido.DadosPedido;
 import lanchonete.pedido.Pedido;
 
-/**
- *
- * @author lgdal
- */
 public class FormCozinha extends javax.swing.JFrame {
-    
-        ArrayList<DadosPedido> listaPedidos = new ArrayList<>();
-        Atendente atendente = new Atendente();
-        ArrayList<DadosAtendente> listarAtendentes = new ArrayList<>();
-        DadosAtendente dadosAtendente = new DadosAtendente();
-        ArrayList<Atendente> modelAtendente = new ArrayList<>();
 
+    ArrayList<DadosPedido> listaPedidos = new ArrayList<>();
+    Atendente atendente = new Atendente();
+    ArrayList<DadosAtendente> listarAtendentes = new ArrayList<>();
+    DadosAtendente dadosAtendente = new DadosAtendente();
+    ArrayList<Atendente> modelAtendente = new ArrayList<>();
 
     /**
      * Creates new form FormLanchonete4
      */
     public FormCozinha() {
         initComponents();
-        setLocationRelativeTo(null);  
+        setLocationRelativeTo(null);
         carregarPedidos();
     }
 
@@ -299,24 +288,24 @@ public class FormCozinha extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbPedidoEntregueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPedidoEntregueActionPerformed
-        // TODO add your handling code here:
+        // Altera para "Entregue" o status do pedido:
         String statusPedido = "Entregue";
         int linha = jTableConzinha.getSelectedRow();
         int codigoPedido = (int) jTableConzinha.getValueAt(linha, 0);
         DadosPedido dadosPedido = new DadosPedido();
-            try {
-                dadosPedido.atualizarPedidoEntregue(statusPedido, codigoPedido);
-                JOptionPane.showMessageDialog(this,"Pedido entregue para o cliente!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-                carregarPedidos();
-            } catch (Exception ex) {
-                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Erro ao carregar Pedido entregue", "ERRO", JOptionPane.ERROR_MESSAGE);
+        try {
+            dadosPedido.atualizarPedidoEntregue(statusPedido, codigoPedido);
+            JOptionPane.showMessageDialog(this, "Pedido entregue para o cliente!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            carregarPedidos();
+        } catch (Exception ex) {
+            Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro ao carregar Pedido entregue", "ERRO", JOptionPane.ERROR_MESSAGE);
 
-            }
+        }
     }//GEN-LAST:event_jbPedidoEntregueActionPerformed
 
     private void jbAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarActionPerformed
-        // TODO add your handling code here:
+        // Chama o método que atualiza na tela os pedidos:
         carregarPedidos();
     }//GEN-LAST:event_jbAtualizarActionPerformed
 
@@ -325,17 +314,16 @@ public class FormCozinha extends javax.swing.JFrame {
         int linha = jTableConzinha.getSelectedRow();
         int codigoPedido = (int) jTableConzinha.getValueAt(linha, 0);
         DadosPedido dadosPedido = new DadosPedido();
-            try {
-                dadosPedido.removerPedido(codigoPedido);
-                JOptionPane.showMessageDialog(this,"Pedido excluido com sucesso!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-                carregarPedidos();
+        try {
+            dadosPedido.removerPedido(codigoPedido);
+            JOptionPane.showMessageDialog(this, "Pedido excluido com sucesso!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            carregarPedidos();
 
+        } catch (Exception ex) {
+            Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro ao ecluir o pedido", "ERRO", JOptionPane.ERROR_MESSAGE);
 
-            } catch (Exception ex) {
-                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Erro ao ecluir o pedido", "ERRO", JOptionPane.ERROR_MESSAGE);
-
-            }
+        }
     }//GEN-LAST:event_jbCancelarPedidoActionPerformed
 
     private void jbAtendente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtendente1ActionPerformed
@@ -344,56 +332,55 @@ public class FormCozinha extends javax.swing.JFrame {
         int linha = jTableConzinha.getSelectedRow();
         int codigoPedido = (int) jTableConzinha.getValueAt(linha, 0);
         DadosPedido dadosPedido = new DadosPedido();
-            try {
-                dadosPedido.atualizarPedido(cod_atendente, codigoPedido);
-                JOptionPane.showMessageDialog(this,"Pedido direcionado para o Atendente 1!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-                carregarPedidos();
-            } catch (Exception ex) {
-                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Erro ao direcionado para o Atendente 1!", "ERRO", JOptionPane.ERROR_MESSAGE);
+        try {
+            dadosPedido.atualizarPedido(cod_atendente, codigoPedido);
+            JOptionPane.showMessageDialog(this, "Pedido direcionado para o Atendente 1!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            carregarPedidos();
+        } catch (Exception ex) {
+            Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro ao direcionado para o Atendente 1!", "ERRO", JOptionPane.ERROR_MESSAGE);
 
-            }
-        
-        
-        
+        }
+
+
     }//GEN-LAST:event_jbAtendente1ActionPerformed
 
     private void jbAtendente2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtendente2ActionPerformed
         // TODO add your handling code here:
-        
+
         int cod_atendente = 2;
         int linha = jTableConzinha.getSelectedRow();
         int codigoPedido = (int) jTableConzinha.getValueAt(linha, 0);
         DadosPedido dadosPedido = new DadosPedido();
-            try {
-                dadosPedido.atualizarPedido(cod_atendente, codigoPedido);
-                JOptionPane.showMessageDialog(this,"Pedido direcionado para o Atendente 2!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-                carregarPedidos();
-            } catch (Exception ex) {
-                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Erro ao direcionado para o Atendente 2!", "ERRO", JOptionPane.ERROR_MESSAGE);
+        try {
+            dadosPedido.atualizarPedido(cod_atendente, codigoPedido);
+            JOptionPane.showMessageDialog(this, "Pedido direcionado para o Atendente 2!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            carregarPedidos();
+        } catch (Exception ex) {
+            Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro ao direcionado para o Atendente 2!", "ERRO", JOptionPane.ERROR_MESSAGE);
 
-            }
-        
+        }
+
     }//GEN-LAST:event_jbAtendente2ActionPerformed
 
     private void jbAtendente3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtendente3ActionPerformed
         // TODO add your handling code here:
-        
+
         int atendente = 3;
         int linha = jTableConzinha.getSelectedRow();
         int codigoPedido = (int) jTableConzinha.getValueAt(linha, 0);
         DadosPedido dadosPedido = new DadosPedido();
-            try {
-                dadosPedido.atualizarPedido(atendente, codigoPedido);
-                JOptionPane.showMessageDialog(this,"Pedido direcionado para o Atendente 3!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-                carregarPedidos();
-            } catch (Exception ex) {
-                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Erro ao direcionado para o Atendente 3!", "ERRO", JOptionPane.ERROR_MESSAGE);
+        try {
+            dadosPedido.atualizarPedido(atendente, codigoPedido);
+            JOptionPane.showMessageDialog(this, "Pedido direcionado para o Atendente 3!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            carregarPedidos();
+        } catch (Exception ex) {
+            Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro ao direcionado para o Atendente 3!", "ERRO", JOptionPane.ERROR_MESSAGE);
 
-            }
-        
+        }
+
     }//GEN-LAST:event_jbAtendente3ActionPerformed
 
     private void jbPedidoProntoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPedidoProntoActionPerformed
@@ -402,44 +389,43 @@ public class FormCozinha extends javax.swing.JFrame {
         int linha = jTableConzinha.getSelectedRow();
         int codigoPedido = (int) jTableConzinha.getValueAt(linha, 0);
         DadosPedido dadosPedido = new DadosPedido();
-            try {
-                dadosPedido.atualizarStatus(statusPedido, codigoPedido);
-                JOptionPane.showMessageDialog(this,"Pedido pronto para o cliente!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-                carregarPedidos();
-            } catch (Exception ex) {
-                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Erro ao carregar Pedido pronto", "ERRO", JOptionPane.ERROR_MESSAGE);
+        try {
+            dadosPedido.atualizarStatus(statusPedido, codigoPedido);
+            JOptionPane.showMessageDialog(this, "Pedido pronto para o cliente!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+            carregarPedidos();
+        } catch (Exception ex) {
+            Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Erro ao carregar Pedido pronto", "ERRO", JOptionPane.ERROR_MESSAGE);
 
-            }
-        
+        }
+
 
     }//GEN-LAST:event_jbPedidoProntoActionPerformed
 
-    
     /**
      * Atualiza a lista de atendentes buscando os nomes no banco.
-     * @param evt 
+     *
+     * @param evt
      */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-            try {
-                // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
 
-                modelAtendente = dadosAtendente.ListarAtendentes(atendente);
-                jlAtendente1.removeAll();
-                jlAtendente1.setText(modelAtendente.get(0).getNome());
-                
-                modelAtendente = dadosAtendente.ListarAtendentes(atendente);
-                jlAtendente3.removeAll();
-                jlAtendente3.setText(modelAtendente.get(1).getNome());
-                
-                modelAtendente = dadosAtendente.ListarAtendentes(atendente);
-                jlAtendente2.removeAll();
-                jlAtendente2.setText(modelAtendente.get(2).getNome());
-                
-                
-            } catch (Exception ex) {
-                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            modelAtendente = dadosAtendente.ListarAtendentes(atendente);
+            jlAtendente1.removeAll();
+            jlAtendente1.setText(modelAtendente.get(0).getNome());
+
+            modelAtendente = dadosAtendente.ListarAtendentes(atendente);
+            jlAtendente3.removeAll();
+            jlAtendente3.setText(modelAtendente.get(1).getNome());
+
+            modelAtendente = dadosAtendente.ListarAtendentes(atendente);
+            jlAtendente2.removeAll();
+            jlAtendente2.setText(modelAtendente.get(2).getNome());
+
+        } catch (Exception ex) {
+            Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -479,27 +465,31 @@ public class FormCozinha extends javax.swing.JFrame {
             }
         });
     }
-    
-    private void carregarPedidos(){
+
+    /**
+     * Método que lista os pedidos na tabela da tela.
+     */
+    private void carregarPedidos() {
 
         try {
-                        
-            Pedido filtro = new Pedido();                        
+
+            Pedido filtro = new Pedido();
             Pedido pedidos = new Pedido();
             Atendente atendente = new Atendente();
             DadosPedido dadosPedidos = new DadosPedido();
             ArrayList<Pedido> listaPedidos = dadosPedidos.listar(filtro);
+
             DefaultTableModel modelo = new DefaultTableModel();
-            modelo.setColumnIdentifiers(new Object[]{"Código","Descrição","Atendente", "Status"});
+            modelo.setColumnIdentifiers(new Object[]{"Código", "Descrição", "Atendente", "Status"});
             for (Pedido pedido : listaPedidos) {
-                modelo.addRow(new Object[]{pedido.getCod(),pedido.getDescricao(),pedido.getCod_atendente(), pedido.getStatus()});
+                modelo.addRow(new Object[]{pedido.getCod(), pedido.getDescricao(), pedido.getCod_atendente(), pedido.getStatus()});
             }
             jTableConzinha.setModel(modelo);
             JOptionPane.showMessageDialog(this, "**LISTA DE PEDIDOS ATUALIZADA**");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-    }    
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

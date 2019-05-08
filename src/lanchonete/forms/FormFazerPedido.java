@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lanchonete.forms;
 
 import java.text.DateFormat;
@@ -19,58 +14,38 @@ import lanchonete.cliente.Cliente;
 import lanchonete.cliente.DadosCliente;
 import lanchonete.pedido.DadosPedido;
 import lanchonete.pedido.Pedido;
-import lanchonete.produto.DadosProduto;
-import lanchonete.produto.Produto;
 import java.util.Date;
 import lanchonete.venda.DadosVenda;
 import lanchonete.venda.Venda;
 
-
-
-
-
-/**
- *
- * @author User
- */
 public class FormFazerPedido extends javax.swing.JFrame {
-    
+
     Cardapio cardapio = new Cardapio();
     ArrayList<Cardapio> modelCardapio = new ArrayList<>();
     DadosCardapio dadosCardapio = new DadosCardapio();
-    
+
     Cliente modelCliente = new Cliente();
     DadosCliente dadosCliente = new DadosCliente();
-    
-    Produto modelProduto = new Produto();
-    DadosProduto dadosProduto = new DadosProduto();
-    
+
     Pedido modelPedido = new Pedido();
     DadosPedido dadosPedido = new DadosPedido();
-    
+
     Cardapio cardapio1 = new Cardapio();
-    
+
     Cliente cliente = new Cliente();
-    
+
     DadosVenda dadosVenda = new DadosVenda();
     Venda venda = new Venda();
-
-    
-
 
     private static void addRow(Object[] object) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    /**
-     * Creates new form FormLanchonete
-     */
     public FormFazerPedido() {
         initComponents();
         setLocationRelativeTo(null);
         habilitarDesabilitarCampos(false);
         mensagem();
-
 
     }
 
@@ -641,8 +616,8 @@ public class FormFazerPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_jtf3ActionPerformed
 
     private void jbAtualizarCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarCardapioActionPerformed
+        // Atualiza o cardápio e preços na tela de pedidos:
         try {
-            // TODO add your handling code here:
 
             modelCardapio = dadosCardapio.ListarCardapio(cardapio);
         } catch (Exception ex) {
@@ -652,11 +627,11 @@ public class FormFazerPedido extends javax.swing.JFrame {
         jtf1.removeAll();
         jtf1.setText(modelCardapio.get(0).getNome_cardapio());
         jtfValor1.setText(String.valueOf(modelCardapio.get(0).getValor_cardapio()));
-        
+
         jtf2.removeAll();
         jtf2.setText(modelCardapio.get(1).getNome_cardapio());
         jtfValor2.setText(String.valueOf(modelCardapio.get(1).getValor_cardapio()));
-        
+
         jtf3.removeAll();
         jtf3.setText(modelCardapio.get(2).getNome_cardapio());
         jtfValor3.setText(String.valueOf(modelCardapio.get(2).getValor_cardapio()));
@@ -664,47 +639,41 @@ public class FormFazerPedido extends javax.swing.JFrame {
         jtf4.removeAll();
         jtf4.setText(modelCardapio.get(3).getNome_cardapio());
         jtfValor4.setText(String.valueOf(modelCardapio.get(3).getValor_cardapio()));
-        
+
         jtf5.removeAll();
         jtf5.setText(modelCardapio.get(4).getNome_cardapio());
         jtfValor5.setText(String.valueOf(modelCardapio.get(4).getValor_cardapio()));
-        
+
         jtf6.removeAll();
         jtf6.setText(modelCardapio.get(5).getNome_cardapio());
         jtfValor6.setText(String.valueOf(modelCardapio.get(5).getValor_cardapio()));
-                
+
         jtf7.removeAll();
         jtf7.setText(modelCardapio.get(6).getNome_cardapio());
         jtfValor7.setText(String.valueOf(modelCardapio.get(6).getValor_cardapio()));
-                
+
         jtf8.removeAll();
         jtf8.setText(modelCardapio.get(7).getNome_cardapio());
         jtfValor8.setText(String.valueOf(modelCardapio.get(7).getValor_cardapio()));
-                
+
         jtf9.removeAll();
         jtf9.setText(modelCardapio.get(8).getNome_cardapio());
-        jtfValor9.setText(String.valueOf(modelCardapio.get(8).getValor_cardapio()));      
-        
-        
+        jtfValor9.setText(String.valueOf(modelCardapio.get(8).getValor_cardapio()));
+
+
     }//GEN-LAST:event_jbAtualizarCardapioActionPerformed
 
     private void jbIniciarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbIniciarPedidoActionPerformed
-        //Habilita os campos para a entrada do pedido.
-        
-        //Solicita que um nome seja inserido antes de iniciar o pedido
+        //Habilita os campos para a entrada do pedido e Solicita que um nome seja inserido antes de iniciar o pedido.
+
         if (jtfNome.getText().equals("")) {
-            JOptionPane.showMessageDialog(this,"Entrar com seu nome antes de aperta o botão iniciar pedido", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-            
+            JOptionPane.showMessageDialog(this, "Entrar com seu nome antes de aperta o botão iniciar pedido", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
+
         } else {
-           habilitarDesabilitarCampos(true); 
+            habilitarDesabilitarCampos(true);
         }
-        
-        
-        
 
-        
 
-        
     }//GEN-LAST:event_jbIniciarPedidoActionPerformed
 
     private void jbProduto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbProduto1ActionPerformed
@@ -730,11 +699,11 @@ public class FormFazerPedido extends javax.swing.JFrame {
         cardapio1.setValor_cardapio(Double.parseDouble(jtfValor2.getText()));
         adicionarItensaoPedido();
         somarValorTotal();
-        
+
     }//GEN-LAST:event_jbProduto2ActionPerformed
 
     private void jbProduto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbProduto3ActionPerformed
-         // Adiciona o produto e valor do item 3 no pedido:
+        // Adiciona o produto e valor do item 3 no pedido:
         cardapio1.setNome_cardapio(jtf3.getText());
         cardapio1.setValor_cardapio(Double.parseDouble(jtfValor3.getText()));
         adicionarItensaoPedido();
@@ -790,13 +759,13 @@ public class FormFazerPedido extends javax.swing.JFrame {
     }//GEN-LAST:event_jbProduto9ActionPerformed
 
     private void jbCancelarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCancelarPedidoActionPerformed
-        // TODO add your handling code here:
+        // Se o botão cancelar for apertado ele limpa os campos da tela e desabilita alguns botões:
         limparCampos();
         habilitarDesabilitarCampos(false);
     }//GEN-LAST:event_jbCancelarPedidoActionPerformed
 
     private void jbFinalizarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFinalizarPedidoActionPerformed
-        // TODO add your handling code here:
+        // Salva as informações do pedido no banco de dados:
 
         Pedido pedido = new Pedido();
         venda = new Venda();
@@ -816,62 +785,56 @@ public class FormFazerPedido extends javax.swing.JFrame {
                 venda.setValor((Double) jtPedido.getValueAt(i, 1));
                 dadosPedido.cadastrarPedido(pedido);
                 pedido.setCod(dadosPedido.retornaIdPedido());
-                
-                
+
                 dadosVenda.registrarVenda(pedido, venda);
             }
-            JOptionPane.showMessageDialog(this,"Pedido finalizado", "INFORMAÇÃO", JOptionPane.INFORMATION_MESSAGE);
-
+            JOptionPane.showMessageDialog(this, "Pedido finalizado", "INFORMAÇÃO", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (Exception ex) {
             Logger.getLogger(FormFazerPedido.class.getName()).log(Level.SEVERE, null, ex);
-            JOptionPane.showMessageDialog(this,"Problema no pedido. Tente novamente", "ERRO", JOptionPane.ERROR);
+            JOptionPane.showMessageDialog(this, "Problema no pedido. Tente novamente", "ERRO", JOptionPane.ERROR);
         }
-        
+
         limparCampos();
         habilitarDesabilitarCampos(false);
 
     }//GEN-LAST:event_jbFinalizarPedidoActionPerformed
 
-   /**
-     * Converte data tipo date para o formato americano yyyy/MM/dd também tipo date
-     * Date para Date
+    /**
+     * Converte data tipo date para o formato americano yyyy/MM/dd também tipo
+     * date Date para Date
+     *
      * @param pData
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
-     public java.sql.Date converterDataParaDateUS(Date pData) throws Exception {   
+    public java.sql.Date converterDataParaDateUS(Date pData) throws Exception {
         SimpleDateFormat formatarDate = new SimpleDateFormat("yyyy/MM/dd");
         String dataString = formatarDate.format(pData);
-         if (pData == null || pData.equals(""))  
-            return null;  
-          
-        java.sql.Date date = null;  
-        try {  
-            DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
-            date = new java.sql.Date( ((java.util.Date)formatter.parse(dataString)).getTime() );  
-        } catch (ParseException e) {              
-            throw e;  
-        }  
-        return date;  
-    }   
-    
-    
+        if (pData == null || pData.equals("")) {
+            return null;
+        }
+
+        java.sql.Date date = null;
+        try {
+            DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+            date = new java.sql.Date(((java.util.Date) formatter.parse(dataString)).getTime());
+        } catch (ParseException e) {
+            throw e;
+        }
+        return date;
+    }
+
+
     private void jbDeletarItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbDeletarItemActionPerformed
         // Deleta um item selecionado da tabela:
-        DefaultTableModel deletaItem = (DefaultTableModel)jtPedido.getModel();
+        DefaultTableModel deletaItem = (DefaultTableModel) jtPedido.getModel();
         int linha = jtPedido.getSelectedRow();
         deletaItem.removeRow(linha);
         somarValorTotal();
-        
+
     }//GEN-LAST:event_jbDeletarItemActionPerformed
 
- 
-    
-    
-    
-    
-    
     /**
      * @param args the command line arguments
      */
@@ -937,8 +900,8 @@ public class FormFazerPedido extends javax.swing.JFrame {
             }
         });
     }
-    
-        /**
+
+    /**
      * vai somando os valores na medida que os produtos são adicinados.
      */
     private void somarValorTotal() {
@@ -950,36 +913,43 @@ public class FormFazerPedido extends javax.swing.JFrame {
         }
         jtValorTotal.setText(String.valueOf(soma));
     }
-    
+
     /**
      * Vai adicionando itens na lista
      */
     private void adicionarItensaoPedido() {
         DefaultTableModel modelo = (DefaultTableModel) jtPedido.getModel();
+        
         //Inserindo uma nova linha na tabela
         int cont = 0;
         for (int i = 0; i < cont; i++) {
             modelo.setNumRows(0);
         }
+        
         //adicionar itens na tabela
         modelo.addRow(new Object[]{
             cardapio1.getNome_cardapio(),
             cardapio1.getValor_cardapio()
         });
     }
-    
-    private void limparCampos(){
+
+    /*
+    Limpa os dados da tela e da tabela.
+    */
+    private void limparCampos() {
         jtfNome.setText("");
         jtValorTotal.setText("");
-        
-        DefaultTableModel modelo = (DefaultTableModel) jtPedido.getModel();        
-        modelo.setNumRows(0);
-        
-        
 
+        DefaultTableModel modelo = (DefaultTableModel) jtPedido.getModel();
+        modelo.setNumRows(0);
 
     }
-    
+
+   
+    /**
+     * Habilita(true)/Desabilita(false) campos da tela.
+     * @param condicao 
+     */
     private void habilitarDesabilitarCampos(boolean condicao) {
         jbProduto1.setEnabled(condicao);
         jbProduto2.setEnabled(condicao);
@@ -994,12 +964,11 @@ public class FormFazerPedido extends javax.swing.JFrame {
         jbDeletarItem.setEnabled(condicao);
 
     }
-    
-        private void mensagem() {
-            JOptionPane.showMessageDialog(this,"Entrar com seu nome e apertar IniciarPedido", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
 
+    private void mensagem() {
+        JOptionPane.showMessageDialog(this, "Entrar com seu nome e apertar IniciarPedido", "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
 
-    }    
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

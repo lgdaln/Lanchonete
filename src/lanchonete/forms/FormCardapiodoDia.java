@@ -15,25 +15,21 @@ import lanchonete.cliente.Cliente;
 import lanchonete.cliente.DadosCliente;
 import lanchonete.pedido.DadosPedido;
 import lanchonete.pedido.Pedido;
-import lanchonete.produto.DadosProduto;
-import lanchonete.produto.Produto;
 
 /**
  *
  * @author lgdal
  */
 public class FormCardapiodoDia extends javax.swing.JFrame {
-    
+
     Cardapio cardapio = new Cardapio();
     ArrayList<Cardapio> modelCardapio = new ArrayList<>();
     DadosCardapio dadosCardapio = new DadosCardapio();
-    
+
     Cliente modelCliente = new Cliente();
     DadosCliente dadosCliente = new DadosCliente();
-    
-    Produto modelProduto = new Produto();
-    DadosProduto dadosProduto = new DadosProduto();
-    
+
+
     Pedido modelPedido = new Pedido();
     DadosPedido dadosPedido = new DadosPedido();
 
@@ -42,7 +38,9 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
      */
     public FormCardapiodoDia() {
         initComponents();
+        //Abri a aplicação no centro da tela.
         setLocationRelativeTo(null);
+        //Chama o método que atualiza na tela as informações que estão no banco de dados.
         AtualizarCardapiodoBanconaTela();
 
     }
@@ -372,14 +370,31 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
     }//GEN-LAST:event_jtf3ActionPerformed
 
     private void jbCarregarCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCarregarCardapioActionPerformed
-        
-        //Atualização da linha 1 do cardápio
-        try {           
+        //Atualiza as informações do banco com base no que foi digitado na tela
 
+        try { 
+            int cod_cardapio = 0;
+            
+            /*APAGAR*/
+            modelCardapio = dadosCardapio.ListarCardapio(cardapio);
+            if (modelCardapio.get(0).getNome_cardapio().isEmpty()) {
+                 cardapio.setNome_cardapio(jtf1.getText());
+                 cod_cardapio = 1;
+                atualizarCardapio(cod_cardapio);
+                } else {
+                cardapio.setNome_cardapio(jtf1.getText());
+                 cod_cardapio = 1;
+                atualizarCardapio(cod_cardapio);
+                }
+            
+            
+            /*Apagar até aqui*/
+            /*
+            //Atualização da linha 1 do cardápio
             cardapio.setNome_cardapio(jtf1.getText());
             cardapio.setValor_cardapio(Double.parseDouble(jtfValor1.getText()));
-            int cod_cardapio = 1;
-            atualizarCardapio(cod_cardapio);
+            cod_cardapio = 1;
+            atualizarCardapio(cod_cardapio);           
 
             //Atualização da linha 2 do cardápio
             cardapio.setNome_cardapio(jtf2.getText());
@@ -428,16 +443,12 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
             cardapio.setValor_cardapio(Double.parseDouble(jtfValor9.getText()));
             cod_cardapio = 9;
             atualizarCardapio(cod_cardapio);
-            
-            JOptionPane.showMessageDialog(this,"Cardápio atualizado com sucesso", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
-
-        
+*/
+            JOptionPane.showMessageDialog(this, "Cardápio atualizado com sucesso", "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception ex) {
-                Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(this, "Erro ao atulizar o cardápio!", "ERRO", JOptionPane.ERROR_MESSAGE);
-            
-        }
         
+        }
+       
 
 
     }//GEN-LAST:event_jbCarregarCardapioActionPerformed
@@ -484,79 +495,85 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
             }
         });
     }
-    
+
     /**
      * Atualiza os dados do cardapio de acordo com oq for escrito na tela
      * Chamado pelo botão jbCarregarCardapio.
-     * @param cod_cardapio 
+     *
+     * @param cod_cardapio
      */
-    public void atualizarCardapio(int cod_cardapio){
+    public void atualizarCardapio(int cod_cardapio) {
         try {
             dadosCardapio.atualizarCardapio(cardapio, cod_cardapio);
         } catch (Exception ex) {
             Logger.getLogger(FormCardapiodoDia.class.getName()).log(Level.SEVERE, null, ex);
-        }        
+        }
     }
-    
+
     /**
      * Atualiza os dados do cardapio na tela de acordo com oq está no banco
      * Chamado pela inicialização da tela.
      */
-    public void AtualizarCardapiodoBanconaTela(){
+    public void AtualizarCardapiodoBanconaTela() {
         try {
+            
             modelCardapio = dadosCardapio.ListarCardapio(cardapio);
 
-        jtf1.removeAll();
-        jtf1.setText(modelCardapio.get(0).getNome_cardapio());
-        jtfValor1.removeAll();
-        jtfValor1.setText(String.valueOf(modelCardapio.get(0).getValor_cardapio()));
-        
-        jtf2.removeAll();
-        jtf2.setText(modelCardapio.get(1).getNome_cardapio());
-        jtfValor2.removeAll();
-        jtfValor2.setText(String.valueOf(modelCardapio.get(1).getValor_cardapio()));       
-        
-        jtf3.removeAll();
-        jtf3.setText(modelCardapio.get(2).getNome_cardapio());
-        jtfValor3.removeAll();
-        jtfValor3.setText(String.valueOf(modelCardapio.get(2).getValor_cardapio()));
-        
-        jtf4.removeAll();
-        jtf4.setText(modelCardapio.get(3).getNome_cardapio());
-        jtfValor4.removeAll();
-        jtfValor4.setText(String.valueOf(modelCardapio.get(3).getValor_cardapio()));
-        
-        jtf5.removeAll();
-        jtf5.setText(modelCardapio.get(4).getNome_cardapio());
-        jtfValor5.removeAll();
-        jtfValor5.setText(String.valueOf(modelCardapio.get(4).getValor_cardapio()));
-        
-        jtf6.removeAll();
-        jtf6.setText(modelCardapio.get(5).getNome_cardapio());
-        jtfValor6.removeAll();
-        jtfValor6.setText(String.valueOf(modelCardapio.get(5).getValor_cardapio()));
-        
-        jtf7.removeAll();
-        jtf7.setText(modelCardapio.get(6).getNome_cardapio());
-        jtfValor7.removeAll();
-        jtfValor7.setText(String.valueOf(modelCardapio.get(6).getValor_cardapio()));
-        
-        jtf8.removeAll();
-        jtf8.setText(modelCardapio.get(7).getNome_cardapio());
-        jtfValor8.removeAll();
-        jtfValor8.setText(String.valueOf(modelCardapio.get(7).getValor_cardapio()));
-        
-        jtf9.removeAll();
-        jtf9.setText(modelCardapio.get(8).getNome_cardapio());
-        jtfValor9.removeAll();
-        jtfValor9.setText(String.valueOf(modelCardapio.get(8).getValor_cardapio()));
-        
-                } catch (Exception ex) {
-            Logger.getLogger(FormCardapiodoDia.class.getName()).log(Level.SEVERE, null, ex);
+            jtf1.removeAll();
+            jtf1.setText(modelCardapio.get(0).getNome_cardapio());
+            jtfValor1.removeAll();
+            jtfValor1.setText(String.valueOf(modelCardapio.get(0).getValor_cardapio()));
+
+            jtf2.removeAll();
+            jtf2.setText(modelCardapio.get(1).getNome_cardapio());
+            jtfValor2.removeAll();
+            jtfValor2.setText(String.valueOf(modelCardapio.get(1).getValor_cardapio()));
+
+            jtf3.removeAll();
+            jtf3.setText(modelCardapio.get(2).getNome_cardapio());
+            jtfValor3.removeAll();
+            jtfValor3.setText(String.valueOf(modelCardapio.get(2).getValor_cardapio()));
+
+            jtf4.removeAll();
+            jtf4.setText(modelCardapio.get(3).getNome_cardapio());
+            jtfValor4.removeAll();
+            jtfValor4.setText(String.valueOf(modelCardapio.get(3).getValor_cardapio()));
+
+            jtf5.removeAll();
+            jtf5.setText(modelCardapio.get(4).getNome_cardapio());
+            jtfValor5.removeAll();
+            jtfValor5.setText(String.valueOf(modelCardapio.get(4).getValor_cardapio()));
+
+            jtf6.removeAll();
+            jtf6.setText(modelCardapio.get(5).getNome_cardapio());
+            jtfValor6.removeAll();
+            jtfValor6.setText(String.valueOf(modelCardapio.get(5).getValor_cardapio()));
+
+            jtf7.removeAll();
+            jtf7.setText(modelCardapio.get(6).getNome_cardapio());
+            jtfValor7.removeAll();
+            jtfValor7.setText(String.valueOf(modelCardapio.get(6).getValor_cardapio()));
+
+            jtf8.removeAll();
+            jtf8.setText(modelCardapio.get(7).getNome_cardapio());
+            jtfValor8.removeAll();
+            jtfValor8.setText(String.valueOf(modelCardapio.get(7).getValor_cardapio()));
+
+            jtf9.removeAll();
+            jtf9.setText(modelCardapio.get(8).getNome_cardapio());
+            jtfValor9.removeAll();
+            jtfValor9.setText(String.valueOf(modelCardapio.get(8).getValor_cardapio()));
+           
+
+        } catch (Exception ex) {
         }
-     
         
+            
+        
+
     }
+    
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

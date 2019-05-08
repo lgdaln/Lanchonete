@@ -13,7 +13,13 @@ import lanchonete.pedido.Pedido;
 public class DadosAtendente extends ConexaoBanco{
     
     
-     public ArrayList<Atendente> ListarAtendentes(Atendente filtro) throws Exception {
+    /**
+     * Lista os atendentes que estão no banco
+     * @param filtro
+     * @return
+     * @throws Exception 
+     */ 
+    public ArrayList<Atendente> ListarAtendentes(Atendente filtro) throws Exception {
         ArrayList<Atendente> retorno = new ArrayList<>();
 
         //instrução sql listando atendentes
@@ -46,6 +52,14 @@ public class DadosAtendente extends ConexaoBanco{
         return retorno;
     }
      
+    
+    /**
+     * Atualiza o banco com base nas informações da tela.
+     * @param c
+     * @param cod_atendente
+     * @throws SQLException
+     * @throws Exception 
+     */
     public void atualizarAtendentes(Atendente c, int cod_atendente) throws SQLException, Exception {
         //instrucao a ser executada
         String sql = "UPDATE atendente SET nome_atendente = ? WHERE cod_atendente = ? ";

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lanchonete.forms;
 
 import java.sql.SQLException;
@@ -15,18 +10,13 @@ import lanchonete.cliente.Cliente;
 import lanchonete.pedidoXcliente.DadosPedidoCliente;
 import lanchonete.pedidoXcliente.PedidoCliente;
 
-/**
- *
- * @author lgdal
- */
 public class FormPedidoCliente extends javax.swing.JFrame {
-    
+
     DadosPedidoCliente dadosPedidoCliente = new DadosPedidoCliente();
     PedidoCliente pedidoCliente = new PedidoCliente();
     ArrayList<PedidoCliente> listaPedidoCliente = new ArrayList<>();
-    
-    Cliente cliente = new Cliente();
 
+    Cliente cliente = new Cliente();
 
     /**
      * Creates new form FormPedidoCliente
@@ -167,9 +157,8 @@ public class FormPedidoCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
-        // TODO add your handling code here:
-        //cliente.setNome(jtfNome.getText());
-        carregarVendaspeloCliente(jtfNome.getText());      
+        // Chama todos os pedidos de um cliente:
+        carregarVendaspeloCliente(jtfNome.getText());
 
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
@@ -207,7 +196,10 @@ public class FormPedidoCliente extends javax.swing.JFrame {
             }
         });
     }
-    
+
+    /*
+    Carrega todas as vendas na tabela da tela.
+     */
     private void carregarVendas() {
 
         DefaultTableModel modelo = new DefaultTableModel();
@@ -225,14 +217,18 @@ public class FormPedidoCliente extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "**LISTA DE PEDIDOS ATUALIZADA**");
 
     }
-    
-    
-        private void carregarVendaspeloCliente(String nomeCliente) {
+
+    /**
+     * Carrega todas as vendas para um determinado cliente.
+     *
+     * @param nomeCliente
+     */
+    private void carregarVendaspeloCliente(String nomeCliente) {
 
         DefaultTableModel modelo = new DefaultTableModel();
         ArrayList<PedidoCliente> listaPedidos = null;
         try {
-        listaPedidos = dadosPedidoCliente.getPedidoPeloCliente(nomeCliente);
+            listaPedidos = dadosPedidoCliente.getPedidoPeloCliente(nomeCliente);
         } catch (SQLException ex) {
             Logger.getLogger(FormPedidoCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -243,10 +239,6 @@ public class FormPedidoCliente extends javax.swing.JFrame {
         jtPesquisaIndividual.setModel(modelo);
 
     }
-
-
-
-         
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

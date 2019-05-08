@@ -26,12 +26,11 @@ import lanchonete.pedidoXcliente.PedidoCliente;
  * @author lgdal
  */
 public class FormGerencial extends javax.swing.JFrame {
-    
+
     Gerencial gerencial = new Gerencial();
     DadosGerencial dadosGerencial = new DadosGerencial();
     Pedido pedido = new Pedido();
     DadosPedidoCliente dadosPedidoCliente = new DadosPedidoCliente();
-        
 
     /**
      * Creates new form FormGerencial
@@ -39,7 +38,7 @@ public class FormGerencial extends javax.swing.JFrame {
     public FormGerencial() {
         initComponents();
         setLocationRelativeTo(null);
-        
+
     }
 
     /**
@@ -249,26 +248,36 @@ public class FormGerencial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Mostra a soma de valores que foi vendida no dia:
+        //Mostra a soma de valores que foi vendida no dia atual (hoje):
         try {
-            pedido.setData(converterDataParaDateUS(new java.util.Date(System.currentTimeMillis())));
-            jtfValorDia.setText(String.valueOf(dadosGerencial.valorTotalEntreduasDatas()));
+            Date dataHoje = converterDataParaDateUS(new java.util.Date(System.currentTimeMillis()));
+            Date dateUS = converterDataParaDateUS(dataHoje);
+            jtfValorDia.setText(String.valueOf(dadosGerencial.valorTotalFechamentoDoDia(dateUS)));
+            carregarVendas(dateUS);
+
         } catch (Exception ex) {
             Logger.getLogger(FormGerencial.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        carregarVendas();
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jbRelatorioDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRelatorioDataActionPerformed
-        //Mostra a soma de valores que foi vendida no ddia solicitado:
-        try {            
-            pedido.setData(converterDataStringParaDateUS((jtfEntradaData.getText())));
-            jtfValorVendidoData.setText(String.valueOf(dadosGerencial.valorTotalEntreduasDatas()));
-        } catch (Exception ex) {
-            Logger.getLogger(FormGerencial.class.getName()).log(Level.SEVERE, null, ex);
+        //Mostra a soma de valores que foi vendida no dia solicitado:
+
+        SimpleDateFormat parser = new SimpleDateFormat("dd/MM/yyyy");
+        Date date = null;
+
+        try {
+            date = parser.parse(jtfEntradaData.getText());
+            Date dateUS = converterDataParaDateUS(date);
+            pedido.setData(dateUS);
+            jtfValorVendidoData.setText(String.valueOf(dadosGerencial.valorTotalFechamentoDoDia(dateUS)));
+            carregarVendas(dateUS);
+
+        } catch (Exception e) {
         }
-        
+
     }//GEN-LAST:event_jbRelatorioDataActionPerformed
 
     private void jtfValorVendidoDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfValorVendidoDataActionPerformed
@@ -308,9 +317,8 @@ public class FormGerencial extends javax.swing.JFrame {
                 new FormGerencial().setVisible(true);
             }
         });
-    } 
-    
-    
+    }
+
     /**
      * Limpa os campos do formulário.
      */
@@ -320,14 +328,17 @@ public class FormGerencial extends javax.swing.JFrame {
         jtfValorVendidoData.setText("");
 
     }
-    
-    
-        private void carregarVendas() {
+
+    /**
+     * Carrega n atabela a lista de vendas realizadas em uma data
+     * @param d 
+     */
+    private void carregarVendas(Date d) {
 
         DefaultTableModel modelo = new DefaultTableModel();
         ArrayList<PedidoCliente> listaPedidos = null;
         try {
-            listaPedidos = dadosPedidoCliente.getPedidoCliente();
+            listaPedidos = dadosPedidoCliente.getPedidoClienteporData(d);
         } catch (SQLException ex) {
             Logger.getLogger(FormPedidoCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -339,52 +350,32 @@ public class FormGerencial extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "**LISTA DE PRODUTOS VENDIDOS ATUALIZADA**");
 
     }
-    
-       /**
-     * Converte data tipo date para o formato americano yyyy/MM/dd também tipo date
-     * Date para Date
+
+    /**
+     * Converte data tipo date para o formato americano yyyy/MM/dd também tipo
+     * date Date para Date
+     *
      * @param pData
      * @return
-     * @throws Exception 
+     * @throws Exception
      */
-     public java.sql.Date converterDataParaDateUS(Date pData) throws Exception {   
+    public java.sql.Date converterDataParaDateUS(Date pData) throws Exception {
         SimpleDateFormat formatarDate = new SimpleDateFormat("yyyy/MM/dd");
         String dataString = formatarDate.format(pData);
-         if (pData == null || pData.equals(""))  
-            return null;  
-          
-        java.sql.Date date = null;  
-        try {  
-            DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
-            date = new java.sql.Date( ((java.util.Date)formatter.parse(dataString)).getTime() );  
-        } catch (ParseException e) {              
-            throw e;  
-        }  
-        return date;  
-    } 
-     
-        /**
-     * Converte data tipo string para o formato americano yyyy/MM/dd no tipo date
-     * String para Date
-     * @param data
-     * @return
-     * @throws Exception 
-     */
-     public java.sql.Date converterDataStringParaDateUS(String data) throws Exception {   
-        if (data == null || data.equals(""))  
-            return null;  
-          
-        java.sql.Date date = null;  
-        try {  
-            DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");  
-            date = new java.sql.Date( ((java.util.Date)formatter.parse(data)).getTime() );  
-        } catch (ParseException e) {              
-            throw e;  
-        }  
-        return date;  
+        if (pData == null || pData.equals("")) {
+            return null;
+        }
+
+        java.sql.Date date = null;
+        try {
+            DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+            date = new java.sql.Date(((java.util.Date) formatter.parse(dataString)).getTime());
+        } catch (ParseException e) {
+            throw e;
+        }
+        return date;
     }
-     
-     
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

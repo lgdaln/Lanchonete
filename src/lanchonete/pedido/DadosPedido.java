@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import lanchonete.ConexaoBanco;
 import lanchonete.atendente.Atendente;
 import lanchonete.cliente.Cliente;
-import lanchonete.produto.Produto;
 
 
 public class DadosPedido extends ConexaoBanco {
@@ -74,7 +73,13 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
     }
 
 
-    public ArrayList<Pedido> listar(Pedido filtro) throws Exception {
+/**
+ * Lista dos pedidos que estão no banco.
+ * @param filtro
+ * @return
+ * @throws Exception 
+ */    
+public ArrayList<Pedido> listar(Pedido filtro) throws Exception {
         ArrayList<Pedido> retorno = new ArrayList<>();
 
         //instrução sql listando pedidos
@@ -111,6 +116,12 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
     }
     
     
+    /**
+     * Remove um pedido do banco.
+     * @param p
+     * @throws SQLException
+     * @throws Exception 
+     */
     public void removerPedido(int p) throws SQLException, Exception {
         //instrucao a ser executada
         String sql = "DELETE FROM pedido WHERE cod_pedido = ? ";
@@ -126,7 +137,14 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
         super.desconectar();
     }
     
-        public void atualizarPedido(int p, int cod) throws SQLException, Exception {
+    /**
+     * Atualiza na tabela pedido o cod_atendente(ID) do atendente.
+     * @param p
+     * @param cod
+     * @throws SQLException
+     * @throws Exception 
+     */    
+    public void atualizarPedido(int p, int cod) throws SQLException, Exception {
         //instrucao a ser executada
         String sql = "UPDATE pedido SET cod_atendente = ? WHERE cod_pedido = ? ";
         //preparando a instrução
@@ -140,7 +158,14 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
         super.desconectar();
     }
         
-        public void atualizarStatus(String p, int cod) throws SQLException, Exception {
+    /**
+     * Atualiza o status do pedido de acordo com o código informado.
+     * @param p
+     * @param cod
+     * @throws SQLException
+     * @throws Exception 
+     */    
+    public void atualizarStatus(String p, int cod) throws SQLException, Exception {
         //instrucao a ser executada
         String sql = "UPDATE pedido SET status_pedido = ? WHERE cod_pedido = ? ";
         //preparando a instrução
@@ -155,6 +180,13 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
     }
         
         
+        /**
+         * Atualiza o status do pedido para pronto.
+         * @param p
+         * @param cod
+         * @throws SQLException
+         * @throws Exception 
+         */
         public void atualizarPedidoEntregue(String p, int cod) throws SQLException, Exception {
         //instrucao a ser executada
         String sql = "UPDATE pedido SET status_pedido = ? WHERE cod_pedido = ? ";
@@ -170,6 +202,12 @@ public ArrayList<Cliente> listar(Cliente filtro) throws Exception {
     }
         
         
+        /**
+         * Cadastra um novo pedido.
+         * @param p
+         * @throws SQLException
+         * @throws Exception 
+         */
         public void cadastrarPedido(Pedido p) throws SQLException, Exception {
         //instrucao a ser executada
         String sql = "INSERT INTO pedido (descricao_pedido, cod_cliente, data_pedido) ";

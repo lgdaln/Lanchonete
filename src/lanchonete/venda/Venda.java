@@ -1,10 +1,17 @@
 package lanchonete.venda;
 
-import lanchonete.produto.Produto;
-
 public class Venda {
 
-private Double Valor;
+    private int cod_venda;
+
+    public int getCod_venda() {
+        return cod_venda;
+    }
+
+    public void setCod_venda(int cod_venda) {
+        this.cod_venda = cod_venda;
+    }
+    private Double Valor;
 
     public Double getValor() {
         return Valor;

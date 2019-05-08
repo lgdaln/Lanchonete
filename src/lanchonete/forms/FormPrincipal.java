@@ -17,8 +17,10 @@ public class FormPrincipal extends javax.swing.JFrame {
      * Creates new form FormPrincipal
      */
     public FormPrincipal() {
+        //Maximiza a tela na abertura da aplicação
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         initComponents();
+        //Abri a tela no centro na abertura
         setLocationRelativeTo(null);
     }
 
@@ -34,7 +36,6 @@ public class FormPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jbSair = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jbFazerPedido = new javax.swing.JButton();
         jbPesquisarPedido = new javax.swing.JButton();
@@ -44,6 +45,8 @@ public class FormPrincipal extends javax.swing.JFrame {
         jbCardapiodoDia = new javax.swing.JButton();
         jbCozinha = new javax.swing.JButton();
         jbAtendentes = new javax.swing.JButton();
+        jbAtendentes1 = new javax.swing.JButton();
+        jbSair = new javax.swing.JButton();
 
         jLabel1.setText("jLabel1");
 
@@ -51,14 +54,6 @@ public class FormPrincipal extends javax.swing.JFrame {
         setBackground(new java.awt.Color(0, 0, 0));
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 0));
-
-        jbSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-sair-50.png"))); // NOI18N
-        jbSair.setText("SAIR");
-        jbSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbSairActionPerformed(evt);
-            }
-        });
 
         jbFazerPedido.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-garçon-50.png"))); // NOI18N
         jbFazerPedido.setText("FAZER PEDIDO");
@@ -80,33 +75,6 @@ public class FormPrincipal extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("TELAS CLIENTE");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jbFazerPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
-            .addComponent(jbPesquisarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jbFazerPedido)
-                .addGap(18, 18, 18)
-                .addComponent(jbPesquisarPedido)
-                .addGap(0, 36, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(10, 10, 10)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(171, Short.MAX_VALUE)))
-        );
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("TELAS INTERNAS");
@@ -127,11 +95,19 @@ public class FormPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jbAtendentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-cozinheiro-48.png"))); // NOI18N
-        jbAtendentes.setText("ATUALIZAR FUNC.");
+        jbAtendentes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-calculadora-50.png"))); // NOI18N
+        jbAtendentes.setText("GESTÃO");
         jbAtendentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbAtendentesActionPerformed(evt);
+            }
+        });
+
+        jbAtendentes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-cozinheiro-48.png"))); // NOI18N
+        jbAtendentes1.setText("ATUALIZAR FUNC.");
+        jbAtendentes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAtendentes1ActionPerformed(evt);
             }
         });
 
@@ -143,6 +119,7 @@ public class FormPrincipal extends javax.swing.JFrame {
             .addComponent(jbCardapiodoDia, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jbCozinha, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
             .addComponent(jbAtendentes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jbAtendentes1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,27 +130,63 @@ public class FormPrincipal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbCozinha)
                 .addGap(18, 18, 18)
+                .addComponent(jbAtendentes1)
+                .addGap(18, 18, 18)
                 .addComponent(jbAtendentes)
-                .addGap(0, 87, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jbFazerPedido, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+            .addComponent(jbPesquisarPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(jbFazerPedido)
+                .addGap(18, 18, 18)
+                .addComponent(jbPesquisarPedido)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 68, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(10, 10, 10)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(171, Short.MAX_VALUE)))
+        );
+
+        jbSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-sair-50.png"))); // NOI18N
+        jbSair.setText("SAIR");
+        jbSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSairActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jbSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jbSair, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbSair)
-                .addContainerGap())
+                .addComponent(jbSair))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -204,34 +217,38 @@ public class FormPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbFazerPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbFazerPedidoActionPerformed
-        // TODO add your handling code here:
+        // Abri a tela de fazer pedido:
         new FormFazerPedido().setVisible(true);
     }//GEN-LAST:event_jbFazerPedidoActionPerformed
 
     private void jbCardapiodoDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCardapiodoDiaActionPerformed
-        // TODO add your handling code here:
+        // Abri a tela de cardápio:
         new FormCardapiodoDia().setVisible(true);
     }//GEN-LAST:event_jbCardapiodoDiaActionPerformed
 
     private void jbPesquisarPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarPedidoActionPerformed
-        // TODO add your handling code here:
+        // Abri a tela de pesquisa de pedidos:
         new FormPedidoCliente().setVisible(true);
     }//GEN-LAST:event_jbPesquisarPedidoActionPerformed
 
     private void jbCozinhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCozinhaActionPerformed
-        // TODO add your handling code here:
+        // Abri a tela da cozinha:
         new FormCozinha().setVisible(true);
     }//GEN-LAST:event_jbCozinhaActionPerformed
 
     private void jbSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSairActionPerformed
-        // TODO add your handling code here:
+        // Sai da aplicação:
         System.exit(0);
     }//GEN-LAST:event_jbSairActionPerformed
 
     private void jbAtendentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtendentesActionPerformed
-        // TODO add your handling code here:
-        new FormAtendentes().setVisible(true);
+        // Abri a tela de atendentes:
+        new FormGerencial().setVisible(true);
     }//GEN-LAST:event_jbAtendentesActionPerformed
+
+    private void jbAtendentes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtendentes1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbAtendentes1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,6 +294,7 @@ public class FormPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JButton jbAtendentes;
+    private javax.swing.JButton jbAtendentes1;
     private javax.swing.JButton jbCardapiodoDia;
     private javax.swing.JButton jbCozinha;
     private javax.swing.JButton jbFazerPedido;
