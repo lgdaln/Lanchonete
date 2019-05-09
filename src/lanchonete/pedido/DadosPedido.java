@@ -83,7 +83,7 @@ public ArrayList<Pedido> listar(Pedido filtro) throws Exception {
         ArrayList<Pedido> retorno = new ArrayList<>();
 
         //instrução sql listando pedidos
-        String sql = " select cod_pedido, data_pedido, hora_pedido, descricao_pedido, status_pedido, obs_pedido,  cod_cliente, cod_atendente";
+        String sql = " select cod_pedido, data_pedido, hora_pedido, descricao_pedido, status_pedido,  cod_cliente, cod_atendente";
         sql += " from Pedido as p ";
         sql += " where p.cod_pedido > 0 ";
         if (filtro.getCod() > 0) {

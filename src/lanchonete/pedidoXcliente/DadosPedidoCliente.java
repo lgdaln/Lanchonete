@@ -27,7 +27,7 @@ public class DadosPedidoCliente  extends ConexaoBanco {
         PedidoCliente pedidoCliente = new PedidoCliente();
         
         try {
-            String sql = "SELECT pedido.cod_pedido, pedido.data_pedido, pedido.hora_pedido, pedido.descricao_pedido, pedido.status_pedido, pedido.obs_pedido, pedido.cod_cliente, pedido.cod_atendente, cliente.cod_cliente, cliente.nome_cliente  FROM pedido INNER JOIN cliente ON pedido.cod_cliente = cliente.cod_cliente;";
+            String sql = "SELECT pedido.cod_pedido, pedido.data_pedido, pedido.hora_pedido, pedido.descricao_pedido, pedido.status_pedido, pedido.cod_cliente, pedido.cod_atendente, cliente.cod_cliente, cliente.nome_cliente  FROM pedido INNER JOIN cliente ON pedido.cod_cliente = cliente.cod_cliente;";
 
             PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
             
@@ -76,7 +76,7 @@ public class DadosPedidoCliente  extends ConexaoBanco {
         PedidoCliente pedidoCliente = new PedidoCliente();
         
         try {
-            String sql = "SELECT pedido.cod_pedido, pedido.data_pedido, pedido.hora_pedido, pedido.descricao_pedido, pedido.status_pedido, pedido.obs_pedido, pedido.cod_cliente, pedido.cod_atendente, cliente.cod_cliente, cliente.nome_cliente FROM pedido INNER JOIN cliente ON pedido.cod_cliente = cliente.cod_cliente WHERE pedido.data_pedido = (?)";
+            String sql = "SELECT pedido.cod_pedido, pedido.data_pedido, pedido.hora_pedido, pedido.descricao_pedido, pedido.status_pedido, pedido.cod_cliente, pedido.cod_atendente, cliente.cod_cliente, cliente.nome_cliente FROM pedido INNER JOIN cliente ON pedido.cod_cliente = cliente.cod_cliente WHERE pedido.data_pedido = (?)";
 
             PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
             
@@ -131,7 +131,7 @@ public class DadosPedidoCliente  extends ConexaoBanco {
 
         
         try {
-            String sql = "SELECT pedido.cod_pedido, pedido.data_pedido, pedido.hora_pedido, pedido.descricao_pedido, pedido.status_pedido, pedido.obs_pedido, pedido.cod_cliente, pedido.cod_atendente, cliente.cod_cliente, cliente.nome_cliente  FROM pedido INNER JOIN cliente ON pedido.cod_cliente = cliente.cod_cliente WHERE cliente.nome_cliente = ?";
+            String sql = "SELECT pedido.cod_pedido, pedido.data_pedido, pedido.hora_pedido, pedido.descricao_pedido, pedido.status_pedido, pedido.cod_cliente, pedido.cod_atendente, cliente.cod_cliente, cliente.nome_cliente  FROM pedido INNER JOIN cliente ON pedido.cod_cliente = cliente.cod_cliente WHERE cliente.nome_cliente = ?";
 
             PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
             

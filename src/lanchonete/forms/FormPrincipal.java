@@ -247,7 +247,9 @@ public class FormPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jbAtendentesActionPerformed
 
     private void jbAtendentes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtendentes1ActionPerformed
-        // TODO add your handling code here:
+        // Abri o cadastro de atendentes:
+        new FormAtendentes().setVisible(true);
+
     }//GEN-LAST:event_jbAtendentes1ActionPerformed
 
     /**

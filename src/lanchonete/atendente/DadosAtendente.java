@@ -74,6 +74,21 @@ public class DadosAtendente extends ConexaoBanco{
         super.desconectar();
     }
     
+        public void inseriAtualizaAtendentes(Atendente a) throws SQLException, Exception {
+        //instrucao a ser executada
+        String sql = "INSERT INTO atendente (cod_atendente, nome_atendente) VALUES((?), (?)) ON DUPLICATE KEY UPDATE  nome_atendente = (?)";
+        //preparando a instrução
+        PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
+        //passando os valores para os parametros
+        preparedStatement.setInt(1, a.getCod());
+        preparedStatement.setString(2, a.getNome());
+        preparedStatement.setString(3, a.getNome());
+        // execute insert SQL stetement
+        preparedStatement.executeUpdate();
+        //fechando a conexão com o banco de dados
+        super.desconectar();
+    }
+    
 
         
 

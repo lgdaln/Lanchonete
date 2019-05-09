@@ -29,7 +29,6 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
     Cliente modelCliente = new Cliente();
     DadosCliente dadosCliente = new DadosCliente();
 
-
     Pedido modelPedido = new Pedido();
     DadosPedido dadosPedido = new DadosPedido();
 
@@ -88,6 +87,7 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
+        jbAtualizar = new javax.swing.JButton();
 
         jLabel2.setText("jLabel2");
 
@@ -189,78 +189,96 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/bread.png"))); // NOI18N
 
+        jbAtualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/lanchonete/imagens/icons8-actualizar-40.png"))); // NOI18N
+        jbAtualizar.setText("ATUALIZAR CARDÁPIO");
+        jbAtualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAtualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jbCarregarCardapio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel12)
-                        .addGap(13, 13, 13)
-                        .addComponent(jtf7))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5)
-                        .addGap(13, 13, 13)
-                        .addComponent(jtf1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6)
-                        .addGap(13, 13, 13)
-                        .addComponent(jtf2))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8)
-                        .addGap(13, 13, 13)
-                        .addComponent(jtf3))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel9)
-                        .addGap(13, 13, 13)
-                        .addComponent(jtf4))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel10)
-                        .addGap(13, 13, 13)
-                        .addComponent(jtf5))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jtf6))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel13)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel14)))
-                        .addGap(4, 4, 4)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jtf9)
-                            .addComponent(jtf8))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtfValor8, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfValor9, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfValor7, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfValor6, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfValor5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfValor4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfValor3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfValor2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfValor1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 602, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jbCarregarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel12)
+                                .addGap(13, 13, 13)
+                                .addComponent(jtf7))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel5)
+                                .addGap(13, 13, 13)
+                                .addComponent(jtf1))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel6)
+                                .addGap(13, 13, 13)
+                                .addComponent(jtf2))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel8)
+                                .addGap(13, 13, 13)
+                                .addComponent(jtf3))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel9)
+                                .addGap(13, 13, 13)
+                                .addComponent(jtf4))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel10)
+                                .addGap(13, 13, 13)
+                                .addComponent(jtf5))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jtf6))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel13)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel14)))
+                                        .addGap(4, 4, 4)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jtf9)
+                                            .addComponent(jtf8)))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGap(9, 9, 9)
+                                        .addComponent(jbAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jtfValor8, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfValor9, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfValor7, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfValor6, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfValor5, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfValor4, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfValor3, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfValor2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtfValor1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(24, 24, 24))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,6 +346,9 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -337,10 +358,9 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addComponent(jbCarregarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jbCarregarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -370,85 +390,177 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
     }//GEN-LAST:event_jtf3ActionPerformed
 
     private void jbCarregarCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCarregarCardapioActionPerformed
-        //Atualiza as informações do banco com base no que foi digitado na tela
 
-        try { 
-            int cod_cardapio = 0;
-            
-            /*APAGAR*/
-            modelCardapio = dadosCardapio.ListarCardapio(cardapio);
-            if (modelCardapio.get(0).getNome_cardapio().isEmpty()) {
-                 cardapio.setNome_cardapio(jtf1.getText());
-                 cod_cardapio = 1;
-                atualizarCardapio(cod_cardapio);
-                } else {
-                cardapio.setNome_cardapio(jtf1.getText());
-                 cod_cardapio = 1;
-                atualizarCardapio(cod_cardapio);
-                }
-            
-            
-            /*Apagar até aqui*/
-            /*
+        double semValor = 0.0;
+        cardapio = new Cardapio();
+        int cod_cardapio = 0;
+
+        try {
             //Atualização da linha 1 do cardápio
-            cardapio.setNome_cardapio(jtf1.getText());
-            cardapio.setValor_cardapio(Double.parseDouble(jtfValor1.getText()));
             cod_cardapio = 1;
-            atualizarCardapio(cod_cardapio);           
+            if (jtf1.getText() == null) {
+                cardapio.setNome_cardapio(" ");
+            } else {
+                cardapio.setNome_cardapio(jtf1.getText());
+            }
+            if ((jtfValor1.getText()).isEmpty()) {
+                cardapio.setValor_cardapio(semValor);
+            } else {
+                cardapio.setValor_cardapio(Double.parseDouble(jtfValor1.getText()));
+            }
+            cardapio.setCod_cardapio(cod_cardapio);
+            atualizarCardapio(cardapio);
 
-            //Atualização da linha 2 do cardápio
-            cardapio.setNome_cardapio(jtf2.getText());
-            cardapio.setValor_cardapio(Double.parseDouble(jtfValor2.getText()));
-            cod_cardapio = 2;
-            atualizarCardapio(cod_cardapio);
-
-            //Atualização da linha 3 do cardápio
-            cardapio.setNome_cardapio(jtf3.getText());
-            cardapio.setValor_cardapio(Double.parseDouble(jtfValor3.getText()));
-            cod_cardapio = 3;
-            atualizarCardapio(cod_cardapio);
-
-            //Atualização da linha 4 do cardápio
-            cardapio.setNome_cardapio(jtf4.getText());
-            cardapio.setValor_cardapio(Double.parseDouble(jtfValor4.getText()));
-            cod_cardapio = 4;
-            atualizarCardapio(cod_cardapio);
-
-            //Atualização da linha 5 do cardápio
-            cardapio.setNome_cardapio(jtf5.getText());
-            cardapio.setValor_cardapio(Double.parseDouble(jtfValor5.getText()));
-            cod_cardapio = 5;
-            atualizarCardapio(cod_cardapio);
-
-            //Atualização da linha 6 do cardápio
-            cardapio.setNome_cardapio(jtf6.getText());
-            cardapio.setValor_cardapio(Double.parseDouble(jtfValor6.getText()));
-            cod_cardapio = 6;
-            atualizarCardapio(cod_cardapio);
-
-            //Atualização da linha 7 do cardápio
-            cardapio.setNome_cardapio(jtf7.getText());
-            cardapio.setValor_cardapio(Double.parseDouble(jtfValor7.getText()));
-            cod_cardapio = 7;
-            atualizarCardapio(cod_cardapio);
-
-            //Atualização da linha 8 do cardápio
-            cardapio.setNome_cardapio(jtf8.getText());
-            cardapio.setValor_cardapio(Double.parseDouble(jtfValor8.getText()));
-            cod_cardapio = 8;
-            atualizarCardapio(cod_cardapio);
-
-            //Atualização da linha 9 do cardápio
-            cardapio.setNome_cardapio(jtf9.getText());
-            cardapio.setValor_cardapio(Double.parseDouble(jtfValor9.getText()));
-            cod_cardapio = 9;
-            atualizarCardapio(cod_cardapio);
-*/
-            JOptionPane.showMessageDialog(this, "Cardápio atualizado com sucesso", "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception ex) {
-        
+        } catch (Exception e) {
         }
-       
+
+        try {
+            //Atualização da linha 2 do cardápio
+            cod_cardapio = 2;
+            if (jtf2.getText() == null) {
+                cardapio.setNome_cardapio(" ");
+            } else {
+                cardapio.setNome_cardapio(jtf2.getText());
+            }
+            if ((jtfValor2.getText()).isEmpty()) {
+                cardapio.setValor_cardapio(semValor);
+            } else {
+                cardapio.setValor_cardapio(Double.parseDouble(jtfValor2.getText()));
+            }
+            cardapio.setCod_cardapio(cod_cardapio);
+            atualizarCardapio(cardapio);
+        } catch (Exception e) {
+        }
+        ;
+        try {
+            //Atualização da linha 3 do cardápio
+            cod_cardapio = 3;
+            if (jtf3.getText() == null) {
+                cardapio.setNome_cardapio(" ");
+            } else {
+                cardapio.setNome_cardapio(jtf3.getText());
+            }
+            if ((jtfValor3.getText()).isEmpty()) {
+                cardapio.setValor_cardapio(semValor);
+            } else {
+                cardapio.setValor_cardapio(Double.parseDouble(jtfValor3.getText()));
+            }
+            cardapio.setCod_cardapio(cod_cardapio);
+            atualizarCardapio(cardapio);
+        } catch (Exception e) {
+        }
+
+        try {
+            cod_cardapio = 4;
+            if (jtf4.getText() == null) {
+                cardapio.setNome_cardapio(" ");
+            } else {
+                cardapio.setNome_cardapio(jtf4.getText());
+            }
+            if ((jtfValor4.getText()).isEmpty()) {
+                cardapio.setValor_cardapio(semValor);
+            } else {
+                cardapio.setValor_cardapio(Double.parseDouble(jtfValor4.getText()));
+            }
+            cardapio.setCod_cardapio(cod_cardapio);
+            atualizarCardapio(cardapio);
+        } catch (Exception e) {
+        }
+        //Atualização da linha 4 do cardápio
+
+        try {
+            //Atualização da linha 5 do cardápio
+            cod_cardapio = 5;
+            if (jtf5.getText() == null) {
+                cardapio.setNome_cardapio(" ");
+            } else {
+                cardapio.setNome_cardapio(jtf5.getText());
+            }
+            if ((jtfValor5.getText()).isEmpty()) {
+                cardapio.setValor_cardapio(semValor);
+            } else {
+                cardapio.setValor_cardapio(Double.parseDouble(jtfValor5.getText()));
+            }
+            cardapio.setCod_cardapio(cod_cardapio);
+            atualizarCardapio(cardapio);
+        } catch (Exception e) {
+        }
+
+        try {
+            //Atualização da linha 6 do cardápio
+            cod_cardapio = 6;
+            if (jtf6.getText() == null) {
+                cardapio.setNome_cardapio(" ");
+            } else {
+                cardapio.setNome_cardapio(jtf6.getText());
+            }
+            if ((jtfValor6.getText()).isEmpty()) {
+                cardapio.setValor_cardapio(semValor);
+            } else {
+                cardapio.setValor_cardapio(Double.parseDouble(jtfValor6.getText()));
+            }
+            cardapio.setCod_cardapio(cod_cardapio);
+            atualizarCardapio(cardapio);
+        } catch (Exception e) {
+        }
+
+        try {
+            //Atualização da linha 7 do cardápio
+            cod_cardapio = 7;
+            if (jtf7.getText() == null) {
+                cardapio.setNome_cardapio(" ");
+            } else {
+                cardapio.setNome_cardapio(jtf7.getText());
+            }
+            if ((jtfValor7.getText()).isEmpty()) {
+                cardapio.setValor_cardapio(semValor);
+            } else {
+                cardapio.setValor_cardapio(Double.parseDouble(jtfValor7.getText()));
+            }
+            cardapio.setCod_cardapio(cod_cardapio);
+            atualizarCardapio(cardapio);
+        } catch (Exception e) {
+        }
+
+        try {
+            //Atualização da linha 8 do cardápio
+            cod_cardapio = 8;
+            if (jtf8.getText() == null) {
+                cardapio.setNome_cardapio(" ");
+            } else {
+                cardapio.setNome_cardapio(jtf8.getText());
+            }
+            if ((jtfValor8.getText()).isEmpty()) {
+                cardapio.setValor_cardapio(semValor);
+            } else {
+                cardapio.setValor_cardapio(Double.parseDouble(jtfValor8.getText()));
+            }
+            cardapio.setCod_cardapio(cod_cardapio);
+            atualizarCardapio(cardapio);
+        } catch (Exception e) {
+        }
+
+        try {
+            //Atualização da linha 9 do cardápio
+            cod_cardapio = 9;
+            if (jtf9.getText() == null) {
+                cardapio.setNome_cardapio(" ");
+            } else {
+                cardapio.setNome_cardapio(jtf9.getText());
+            }
+            if ((jtfValor9.getText()).isEmpty()) {
+                cardapio.setValor_cardapio(semValor);
+            } else {
+                cardapio.setValor_cardapio(Double.parseDouble(jtfValor9.getText()));
+            }
+            cardapio.setCod_cardapio(cod_cardapio);
+            atualizarCardapio(cardapio);
+        } catch (Exception e) {
+        }
+
+        JOptionPane.showMessageDialog(this, "Cardápio atualizado com sucesso", "ATENÇÃO", JOptionPane.INFORMATION_MESSAGE);
+
+        cardapio = new Cardapio();
 
 
     }//GEN-LAST:event_jbCarregarCardapioActionPerformed
@@ -460,6 +572,11 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
     private void jtfValor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfValor3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfValor3ActionPerformed
+
+    private void jbAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarActionPerformed
+        // TODO add your handling code here:
+        AtualizarCardapiodoBanconaTela();
+    }//GEN-LAST:event_jbAtualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -502,9 +619,9 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
      *
      * @param cod_cardapio
      */
-    public void atualizarCardapio(int cod_cardapio) {
+    public void atualizarCardapio(Cardapio cardapio) {
         try {
-            dadosCardapio.atualizarCardapio(cardapio, cod_cardapio);
+            dadosCardapio.inseriAtualizaCardapio(cardapio);
         } catch (Exception ex) {
             Logger.getLogger(FormCardapiodoDia.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -515,65 +632,141 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
      * Chamado pela inicialização da tela.
      */
     public void AtualizarCardapiodoBanconaTela() {
+
         try {
-            
             modelCardapio = dadosCardapio.ListarCardapio(cardapio);
-
-            jtf1.removeAll();
-            jtf1.setText(modelCardapio.get(0).getNome_cardapio());
-            jtfValor1.removeAll();
-            jtfValor1.setText(String.valueOf(modelCardapio.get(0).getValor_cardapio()));
-
-            jtf2.removeAll();
-            jtf2.setText(modelCardapio.get(1).getNome_cardapio());
-            jtfValor2.removeAll();
-            jtfValor2.setText(String.valueOf(modelCardapio.get(1).getValor_cardapio()));
-
-            jtf3.removeAll();
-            jtf3.setText(modelCardapio.get(2).getNome_cardapio());
-            jtfValor3.removeAll();
-            jtfValor3.setText(String.valueOf(modelCardapio.get(2).getValor_cardapio()));
-
-            jtf4.removeAll();
-            jtf4.setText(modelCardapio.get(3).getNome_cardapio());
-            jtfValor4.removeAll();
-            jtfValor4.setText(String.valueOf(modelCardapio.get(3).getValor_cardapio()));
-
-            jtf5.removeAll();
-            jtf5.setText(modelCardapio.get(4).getNome_cardapio());
-            jtfValor5.removeAll();
-            jtfValor5.setText(String.valueOf(modelCardapio.get(4).getValor_cardapio()));
-
-            jtf6.removeAll();
-            jtf6.setText(modelCardapio.get(5).getNome_cardapio());
-            jtfValor6.removeAll();
-            jtfValor6.setText(String.valueOf(modelCardapio.get(5).getValor_cardapio()));
-
-            jtf7.removeAll();
-            jtf7.setText(modelCardapio.get(6).getNome_cardapio());
-            jtfValor7.removeAll();
-            jtfValor7.setText(String.valueOf(modelCardapio.get(6).getValor_cardapio()));
-
-            jtf8.removeAll();
-            jtf8.setText(modelCardapio.get(7).getNome_cardapio());
-            jtfValor8.removeAll();
-            jtfValor8.setText(String.valueOf(modelCardapio.get(7).getValor_cardapio()));
-
-            jtf9.removeAll();
-            jtf9.setText(modelCardapio.get(8).getNome_cardapio());
-            jtfValor9.removeAll();
-            jtfValor9.setText(String.valueOf(modelCardapio.get(8).getValor_cardapio()));
-           
-
         } catch (Exception ex) {
+            Logger.getLogger(FormCardapiodoDia.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-            
-        
+
+        try {
+            //Atualização na linha 1 do banco na atela          
+            jtf1.removeAll();
+            jtfValor1.removeAll();
+            if ((modelCardapio.get(0).getValor_cardapio()).equals(0.0)) {
+                jtf1.setText(" ");
+                jtfValor1.setText(" ");
+            } else {
+                jtfValor1.setText(String.valueOf(modelCardapio.get(0).getValor_cardapio()));
+                jtf1.setText(modelCardapio.get(0).getNome_cardapio());
+            }
+        } catch (Exception e) {
+        }
+
+        try {
+            //Atualização na linha 2 do banco na atela
+            jtf2.removeAll();
+            jtfValor2.removeAll();
+            if ((modelCardapio.get(1).getValor_cardapio()).equals(0.0)) {
+                jtf2.setText(" ");
+                jtfValor2.setText(" ");
+            } else {
+                jtfValor2.setText(String.valueOf(modelCardapio.get(1).getValor_cardapio()));
+                jtf2.setText(modelCardapio.get(1).getNome_cardapio());
+            }
+        } catch (Exception e) {
+        }
+
+        try {
+            //Atualização na linha 3 do banco na atela
+            jtf3.removeAll();
+            jtfValor3.removeAll();
+            if ((modelCardapio.get(2).getValor_cardapio()).equals(0.0)) {
+                jtf3.setText(" ");
+                jtfValor3.setText(" ");
+            } else {
+                jtfValor3.setText(String.valueOf(modelCardapio.get(2).getValor_cardapio()));
+                jtf3.setText(modelCardapio.get(2).getNome_cardapio());
+            }
+        } catch (Exception e) {
+        }
+
+        try {
+            //Atualização na linha 4 do banco na atela
+            jtf4.removeAll();
+            jtfValor4.removeAll();
+            if ((modelCardapio.get(3).getValor_cardapio()).equals(0.0)) {
+                jtf4.setText(" ");
+                jtfValor4.setText(" ");
+            } else {
+                jtfValor4.setText(String.valueOf(modelCardapio.get(3).getValor_cardapio()));
+                jtf4.setText(modelCardapio.get(3).getNome_cardapio());
+            }
+        } catch (Exception e) {
+        }
+
+        try {
+            //Atualização na linha 5 do banco na atela
+            jtf5.removeAll();
+            jtfValor5.removeAll();
+            if ((modelCardapio.get(4).getValor_cardapio()).equals(0.0)) {
+                jtf5.setText(" ");
+                jtfValor5.setText(" ");
+            } else {
+                jtfValor5.setText(String.valueOf(modelCardapio.get(4).getValor_cardapio()));
+                jtf5.setText(modelCardapio.get(4).getNome_cardapio());
+            }
+        } catch (Exception e) {
+        }
+
+        try {
+            //Atualização na linha 6 do banco na atela
+            jtf6.removeAll();
+            jtfValor6.removeAll();
+            if ((modelCardapio.get(5).getValor_cardapio()).equals(0.0)) {
+                jtf6.setText(" ");
+                jtfValor6.setText(" ");
+            } else {
+                jtfValor6.setText(String.valueOf(modelCardapio.get(5).getValor_cardapio()));
+                jtf6.setText(modelCardapio.get(5).getNome_cardapio());
+            }
+        } catch (Exception e) {
+        }
+
+        try {
+            //Atualização na linha 7 do banco na atela
+            jtf7.removeAll();
+            jtfValor7.removeAll();
+            if ((modelCardapio.get(6).getValor_cardapio()).equals(0.0)) {
+                jtf7.setText(" ");
+                jtfValor7.setText(" ");
+            } else {
+                jtfValor7.setText(String.valueOf(modelCardapio.get(6).getValor_cardapio()));
+                jtf7.setText(modelCardapio.get(6).getNome_cardapio());
+            }
+        } catch (Exception e) {
+        }
+
+        try {
+            //Atualização na linha 8 do banco na atela
+            jtf8.removeAll();
+            jtfValor8.removeAll();
+            if ((modelCardapio.get(7).getValor_cardapio()).equals(0.0)) {
+                jtf8.setText(" ");
+                jtfValor8.setText(" ");
+            } else {
+                jtfValor8.setText(String.valueOf(modelCardapio.get(7).getValor_cardapio()));
+                jtf8.setText(modelCardapio.get(7).getNome_cardapio());
+            }
+        } catch (Exception e) {
+        }
+
+        try {
+            //Atualização na linha 9 do banco na atela
+            jtf9.removeAll();
+            jtfValor9.removeAll();
+            if ((modelCardapio.get(8).getValor_cardapio()).equals(0.0)) {
+                jtf9.setText(" ");
+                jtfValor9.setText(" ");
+            } else {
+                jtfValor9.setText(String.valueOf(modelCardapio.get(8).getValor_cardapio()));
+                jtf9.setText(modelCardapio.get(8).getNome_cardapio());
+            }
+        } catch (Exception e) {
+        }
 
     }
-    
-     
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -591,6 +784,7 @@ public class FormCardapiodoDia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton jbAtualizar;
     private javax.swing.JButton jbCarregarCardapio;
     private javax.swing.JTextField jtf1;
     private javax.swing.JTextField jtf2;

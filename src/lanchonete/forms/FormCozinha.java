@@ -9,6 +9,7 @@ import lanchonete.atendente.Atendente;
 import lanchonete.atendente.DadosAtendente;
 import lanchonete.pedido.DadosPedido;
 import lanchonete.pedido.Pedido;
+import lanchonete.venda.DadosVenda;
 
 public class FormCozinha extends javax.swing.JFrame {
 
@@ -45,7 +46,7 @@ public class FormCozinha extends javax.swing.JFrame {
         jbAtualizar = new javax.swing.JButton();
         jbPedidoPronto = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        jbAtualizarAtendentes = new javax.swing.JButton();
         jbAtendente1 = new javax.swing.JButton();
         jlAtendente1 = new javax.swing.JLabel();
         jbAtendente2 = new javax.swing.JButton();
@@ -128,10 +129,10 @@ public class FormCozinha extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 51), java.awt.Color.white));
 
-        jButton1.setText("Atualizar Atendentes");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbAtualizarAtendentes.setText("Atualizar Atendentes");
+        jbAtualizarAtendentes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbAtualizarAtendentesActionPerformed(evt);
             }
         });
 
@@ -195,7 +196,7 @@ public class FormCozinha extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jlAtendente2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jbAtualizarAtendentes, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(38, 38, 38))
         );
         jPanel2Layout.setVerticalGroup(
@@ -209,7 +210,7 @@ public class FormCozinha extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbAtendente2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlAtendente2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbAtualizarAtendentes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jbAtendente3, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -295,7 +296,6 @@ public class FormCozinha extends javax.swing.JFrame {
         DadosPedido dadosPedido = new DadosPedido();
         try {
             dadosPedido.atualizarPedidoEntregue(statusPedido, codigoPedido);
-            JOptionPane.showMessageDialog(this, "Pedido entregue para o cliente!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             carregarPedidos();
         } catch (Exception ex) {
             Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
@@ -314,7 +314,9 @@ public class FormCozinha extends javax.swing.JFrame {
         int linha = jTableConzinha.getSelectedRow();
         int codigoPedido = (int) jTableConzinha.getValueAt(linha, 0);
         DadosPedido dadosPedido = new DadosPedido();
+        DadosVenda dadosVenda = new DadosVenda();
         try {
+            dadosVenda.removerVenda(codigoPedido);
             dadosPedido.removerPedido(codigoPedido);
             JOptionPane.showMessageDialog(this, "Pedido excluido com sucesso!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             carregarPedidos();
@@ -391,7 +393,6 @@ public class FormCozinha extends javax.swing.JFrame {
         DadosPedido dadosPedido = new DadosPedido();
         try {
             dadosPedido.atualizarStatus(statusPedido, codigoPedido);
-            JOptionPane.showMessageDialog(this, "Pedido pronto para o cliente!", "ATENÇÃO", JOptionPane.WARNING_MESSAGE);
             carregarPedidos();
         } catch (Exception ex) {
             Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
@@ -407,26 +408,11 @@ public class FormCozinha extends javax.swing.JFrame {
      *
      * @param evt
      */
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            // TODO add your handling code here:
+    private void jbAtualizarAtendentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAtualizarAtendentesActionPerformed
+        // TODO add your handling code here:
+        atualizarAtendentes();
 
-            modelAtendente = dadosAtendente.ListarAtendentes(atendente);
-            jlAtendente1.removeAll();
-            jlAtendente1.setText(modelAtendente.get(0).getNome());
-
-            modelAtendente = dadosAtendente.ListarAtendentes(atendente);
-            jlAtendente3.removeAll();
-            jlAtendente3.setText(modelAtendente.get(1).getNome());
-
-            modelAtendente = dadosAtendente.ListarAtendentes(atendente);
-            jlAtendente2.removeAll();
-            jlAtendente2.setText(modelAtendente.get(2).getNome());
-
-        } catch (Exception ex) {
-            Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbAtualizarAtendentesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -485,14 +471,36 @@ public class FormCozinha extends javax.swing.JFrame {
                 modelo.addRow(new Object[]{pedido.getCod(), pedido.getDescricao(), pedido.getCod_atendente(), pedido.getStatus()});
             }
             jTableConzinha.setModel(modelo);
-            JOptionPane.showMessageDialog(this, "**LISTA DE PEDIDOS ATUALIZADA**");
+            atualizarAtendentes();
+            JOptionPane.showMessageDialog(this, "**LISTA DE PEDIDOS E ATENDENTES ATUALIZADAS**");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }
+    
+    private void atualizarAtendentes() {
+        try {
+            modelAtendente = dadosAtendente.ListarAtendentes(atendente);
+            jlAtendente1.removeAll();
+            jlAtendente1.setText(modelAtendente.get(0).getNome());
+
+            modelAtendente = dadosAtendente.ListarAtendentes(atendente);
+            jlAtendente3.removeAll();
+            jlAtendente3.setText(modelAtendente.get(1).getNome());
+
+            modelAtendente = dadosAtendente.ListarAtendentes(atendente);
+            jlAtendente2.removeAll();
+            jlAtendente2.setText(modelAtendente.get(2).getNome());
+
+        } catch (Exception ex) {
+            Logger.getLogger(FormCozinha.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -502,6 +510,7 @@ public class FormCozinha extends javax.swing.JFrame {
     private javax.swing.JButton jbAtendente2;
     private javax.swing.JButton jbAtendente3;
     private javax.swing.JButton jbAtualizar;
+    private javax.swing.JButton jbAtualizarAtendentes;
     private javax.swing.JButton jbCancelarPedido;
     private javax.swing.JButton jbPedidoEntregue;
     private javax.swing.JButton jbPedidoPronto;

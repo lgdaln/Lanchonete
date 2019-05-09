@@ -30,4 +30,18 @@ public class DadosVenda extends ConexaoBanco {
         super.desconectar();
     }
 
+    public void removerVenda(int v) throws SQLException, Exception {
+        //instrucao a ser executada
+        String sql = "DELETE FROM venda WHERE cod_venda = ? ";
+
+        //preparando a instrução
+        PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
+        //passando os valores para os parametros
+        preparedStatement.setInt(1, v);
+        // execute insert SQL stetement
+        preparedStatement.executeUpdate();
+        //fechando a conexão com o banco de dados
+        super.desconectar();
+    }
+
 }

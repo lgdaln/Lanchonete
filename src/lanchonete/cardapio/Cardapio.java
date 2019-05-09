@@ -3,14 +3,13 @@ package lanchonete.cardapio;
 
 public class Cardapio {
     
-    int cod_cardapio;
-    String nome_cardapio;
-    Double valor_cardapio;
-
+    private int cod_cardapio;
+    private String nome_cardapio;
+    private Double valor_cardapio;
+    
     public int getCod_cardapio() {
         return cod_cardapio;
     }
-
 
     public String getNome_cardapio() {
         return nome_cardapio;
@@ -26,6 +25,11 @@ public class Cardapio {
 
     public void setValor_cardapio(Double valor_cardapio) {
         this.valor_cardapio = valor_cardapio;
+    }
+
+
+    public void setCod_cardapio(int cod_cardapio) {
+        this.cod_cardapio = cod_cardapio;
     }
     
     

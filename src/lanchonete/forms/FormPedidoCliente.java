@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import lanchonete.cliente.Cliente;
 import lanchonete.pedidoXcliente.DadosPedidoCliente;
+import lanchonete.pedidoXcliente.NegocioPedidoCliente;
 import lanchonete.pedidoXcliente.PedidoCliente;
 
 public class FormPedidoCliente extends javax.swing.JFrame {
@@ -157,9 +158,9 @@ public class FormPedidoCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPesquisarActionPerformed
-        // Chama todos os pedidos de um cliente:
+        // Chama todos os pedidos de um cliente:      
         carregarVendaspeloCliente(jtfNome.getText());
-
+        
     }//GEN-LAST:event_jbPesquisarActionPerformed
 
     /**

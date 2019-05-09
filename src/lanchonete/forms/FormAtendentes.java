@@ -9,9 +9,9 @@ import lanchonete.atendente.DadosAtendente;
 
 public class FormAtendentes extends javax.swing.JFrame {
 
-    Atendente atendente = new Atendente();
     DadosAtendente dadosAtendente = new DadosAtendente();
     ArrayList<Atendente> listaAtendentes = new ArrayList<>();
+    Atendente atentende = new Atendente();
 
     /**
      * Creates new form FormAtendentes
@@ -104,24 +104,54 @@ public class FormAtendentes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    @SuppressWarnings("empty-statement")
     private void jbCarregarNomesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCarregarNomesActionPerformed
         // Carrega os nomes da tela para o banco de dados
+
+        int cod_atendente;
+
         try {
-            atendente.setNome((jtfNomeCozinheiro1.getText()));
-            int cod_atendente = 1;
-            dadosAtendente.atualizarAtendentes(atendente, cod_atendente);
-
-            atendente.setNome((jtfNomeCozinheiro2.getText()));
-            cod_atendente = 2;
-            dadosAtendente.atualizarAtendentes(atendente, cod_atendente);
-
-            atendente.setNome((jtfNomeCozinheiro3.getText()));
-            cod_atendente = 3;
-            dadosAtendente.atualizarAtendentes(atendente, cod_atendente);
-
+            cod_atendente = 1;
+            if (" ".equals(jtfNomeCozinheiro1.getText())) {
+                atentende.setNome(" ");              
+            } else {
+                atentende.setNome(jtfNomeCozinheiro1.getText());
+            }
+            atentende.setCod(cod_atendente);
+            dadosAtendente.inseriAtualizaAtendentes(atentende);
         } catch (Exception ex) {
             Logger.getLogger(FormAtendentes.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        try {
+            cod_atendente = 2;
+            if (jtfNomeCozinheiro2.getText() == null) {
+                atentende.setNome(" ");
+            } else {
+                atentende.setNome(jtfNomeCozinheiro2.getText());
+            }
+            atentende.setCod(cod_atendente);
+            dadosAtendente.inseriAtualizaAtendentes(atentende);
+        } catch (Exception ex) {
+            Logger.getLogger(FormAtendentes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+            cod_atendente = 3;
+            if (jtfNomeCozinheiro3.getText() == null) {
+                atentende.setNome(" ");
+            } else {
+                atentende.setNome(jtfNomeCozinheiro3.getText());
+            }
+            atentende.setCod(cod_atendente);
+            dadosAtendente.inseriAtualizaAtendentes(atentende);
+        } catch (Exception ex) {
+            Logger.getLogger(FormAtendentes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+
+
+
 
     }//GEN-LAST:event_jbCarregarNomesActionPerformed
 
@@ -164,11 +194,112 @@ public class FormAtendentes extends javax.swing.JFrame {
      * Carrega os nomes que estão no banco para a tela.
      */
     public void AtualizarAtendentesdoBanconaTela() {
+
         try {
-        listaAtendentes = dadosAtendente.ListarAtendentes(atendente);
+            listaAtendentes = dadosAtendente.ListarAtendentes(atentende);
         } catch (Exception ex) {
             Logger.getLogger(FormCardapiodoDia.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        if (listaAtendentes.isEmpty()) {
+            try {
+                for (int i = 1; i <= 3; i++) {
+                    atentende.setNome("");
+                    atentende.setCod(i);
+                    dadosAtendente.inseriAtualizaAtendentes(atentende);
+                }
+            } catch (Exception ex) {
+                Logger.getLogger(FormCardapiodoDia.class.getName()).log(Level.SEVERE, null, ex);
+
+            }
+        } else {
+
+            try {
+                //Atualização na linha 2 do banco na atela          
+                jtfNomeCozinheiro1.removeAll();
+                if (listaAtendentes.get(0).getNome().isEmpty()) {
+                    jtfNomeCozinheiro1.setText(" ");
+                } else {
+                    jtfNomeCozinheiro1.setText(listaAtendentes.get(0).getNome());
+                }
+            } catch (Exception e) {
+            }
+
+            try {
+                //Atualização na linha 2 do banco na atela          
+                jtfNomeCozinheiro2.removeAll();
+                if (listaAtendentes.get(1).getNome().isEmpty()) {
+                    jtfNomeCozinheiro2.setText(" ");
+                } else {
+                    jtfNomeCozinheiro2.setText(listaAtendentes.get(1).getNome());
+                }
+            } catch (Exception e) {
+            }
+
+            try {
+                //Atualização na linha 3 do banco na atela          
+                jtfNomeCozinheiro3.removeAll();
+                if (listaAtendentes.get(2).getNome().isEmpty()) {
+                    jtfNomeCozinheiro3.setText(" ");
+                } else {
+                    jtfNomeCozinheiro3.setText(listaAtendentes.get(2).getNome());
+                }
+            } catch (Exception e) {
+            }
+            
+            
+            
+            
+
+        }
+       
+        /*
+   
+        try {
+            //Atualização na linha 1 do banco na atela          
+            jtfNomeCozinheiro1.removeAll();
+            if ((listaAtendentes.isEmpty())) {
+                jtfNomeCozinheiro1.setText("");
+            } else {
+                jtfNomeCozinheiro1.setText(listaAtendentes.get(0).getNome());
+            }
+        } catch (Exception ex) {
+                        Logger.getLogger(FormCardapiodoDia.class.getName()).log(Level.SEVERE, null, ex);
+
+        }
+
+        try {
+            //Atualização na linha 2 do banco na atela          
+            jtfNomeCozinheiro2.removeAll();
+            if (listaAtendentes.get(1).getNome().isEmpty()) {
+                jtfNomeCozinheiro2.setText(" ");
+            } else {
+                jtfNomeCozinheiro2.setText(listaAtendentes.get(1).getNome());
+            }
+        } catch (Exception e) {
+        }
+
+        try {
+            //Atualização na linha 3 do banco na atela          
+            jtfNomeCozinheiro3.removeAll();
+            if (listaAtendentes.get(2).getNome().isEmpty()) {
+                jtfNomeCozinheiro3.setText(" ");
+            } else {
+                jtfNomeCozinheiro3.setText(listaAtendentes.get(2).getNome());
+            }
+        } catch (Exception e) {
+        }
+        
+        
+        
+        /*
+        
+        
+        
+        
+        
+        
+        
         jtfNomeCozinheiro1.removeAll();
         jtfNomeCozinheiro1.setText(String.valueOf(listaAtendentes.get(0).getNome()));
 
@@ -177,7 +308,7 @@ public class FormAtendentes extends javax.swing.JFrame {
 
         jtfNomeCozinheiro3.removeAll();
         jtfNomeCozinheiro3.setText(String.valueOf(listaAtendentes.get(2).getNome()));
-
+*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

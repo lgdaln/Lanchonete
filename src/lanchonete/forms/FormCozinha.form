@@ -255,7 +255,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="jlAtendente2" min="-2" pref="146" max="-2" attributes="0"/>
                                       <EmptySpace pref="67" max="32767" attributes="0"/>
-                                      <Component id="jButton1" min="-2" pref="186" max="-2" attributes="0"/>
+                                      <Component id="jbAtualizarAtendentes" min="-2" pref="186" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -276,7 +276,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jbAtendente2" alignment="1" min="-2" pref="57" max="-2" attributes="0"/>
                           <Component id="jlAtendente2" alignment="1" min="-2" pref="57" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="jbAtualizarAtendentes" alignment="1" min="-2" pref="71" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -289,12 +289,12 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="jbAtualizarAtendentes">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Atualizar Atendentes"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbAtualizarAtendentesActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbAtendente1">

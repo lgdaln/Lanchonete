@@ -27,7 +27,7 @@ public class DadosCardapio extends ConexaoBanco {
         //preparando a instrução
         PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
 
-        if (filtro.cod_cardapio > 0) {
+        if (filtro.getCod_cardapio() > 0) {
             preparedStatement.setInt(1, filtro.getCod_cardapio());
         }
         //executando a instrução sql
@@ -45,39 +45,24 @@ public class DadosCardapio extends ConexaoBanco {
         return retorno;
     }
 
+    
     /**
-     * Método que atualiza o cardápio do banco de acordo com as informações introduzidas na tela.
+     * Inseri ou atualiza os dados da tela no banco de dados.
      * @param c
-     * @param cod_cardapio
      * @throws SQLException
      * @throws Exception 
-     */
-    public void atualizarCardapio(Cardapio c, int cod_cardapio) throws SQLException, Exception {
+     */ 
+    public void inseriAtualizaCardapio(Cardapio c) throws SQLException, Exception {
         //instrucao a ser executada
-        String sql = "UPDATE cardapiododia SET nome_cardapio = ?, valor_cardapio = ? WHERE cod_cardapio = ? ";
+        String sql = "INSERT INTO cardapiododia (cod_cardapio, nome_cardapio, valor_cardapio) VALUES((?), (?), (?)) ON DUPLICATE KEY UPDATE  nome_cardapio = (?), valor_cardapio=(?)";
         //preparando a instrução
         PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
         //passando os valores para os parametros
-        preparedStatement.setString(1, c.getNome_cardapio());
-        preparedStatement.setDouble(2, c.getValor_cardapio());
-        preparedStatement.setInt(3, cod_cardapio);
-        // execute insert SQL stetement
-        preparedStatement.executeUpdate();
-        //fechando a conexão com o banco de dados
-        super.desconectar();
-    }
-    
-    /*
-    Cria os campos para a tabela cardápio do dia.
-    */ 
-    public void criarCardapio() throws SQLException, Exception {
-        //instrucao a ser executada
-        String sql = "INSERT INTO  CardapioDoDia (nome_cardapio, valor_cardapio) VALUES ((?), (?)); ";
-        //preparando a instrução
-        PreparedStatement preparedStatement = super.conectar().prepareStatement(sql);
-        //passando os valores para os parametros
-        preparedStatement.setString(1, "Entre aqui com a descrição");
-        preparedStatement.setDouble(2, '0');
+        preparedStatement.setInt(1, c.getCod_cardapio());
+        preparedStatement.setString(2, c.getNome_cardapio());
+        preparedStatement.setDouble(3, c.getValor_cardapio());
+        preparedStatement.setString(4, c.getNome_cardapio());
+        preparedStatement.setDouble(5, c.getValor_cardapio());
         // execute insert SQL stetement
         preparedStatement.executeUpdate();
         //fechando a conexão com o banco de dados
